@@ -1,2 +1,5 @@
 composer.lock
+
 nhpcc/cache/
+nhpcc/assets/components
+wwwroot/static/comonents
