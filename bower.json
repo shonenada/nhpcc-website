@@ -1,0 +1,8 @@
+{
+    "name": "nhpcc-website",
+    "version": "1",
+    "dependencies": {
+        "jquery": "~1.10.2",
+        "reset-css": "http://meyerweb.com/eric/tools/css/reset/reset.css"
+    }
+}
