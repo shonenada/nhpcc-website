@@ -6,6 +6,7 @@ else
 
 return array_merge(
     array(
+        'name' => 'nhpcc-website',
         'view' => new \Slim\Views\Twig(),
         'templates.path' => APPROOT. '/templates',
         'cookies.lifetime' => '20 minutes',
