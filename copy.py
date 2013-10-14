@@ -17,8 +17,8 @@ def copy_dirs(src_path, dst_path):
         print 'Deleting', dst_path
     copytree(src_path, dst_path)
 
-
-paths = [dir_join('components'), dir_join('styles'), dir_join('scripts')]
+paths = [dir_join(path) for path in ('components', 'styles',
+                                     'scripts', 'images')]
 [copy_dirs(src_path, dst_path) for src_path, dst_path in paths]
 
 print "Finished copying"
