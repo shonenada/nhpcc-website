@@ -8,12 +8,30 @@
     <meta name="keywords" content="{{ webKeywords }}" />
     <meta name="description" content="{{ webDescription }}" />
     <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/components/reset-css/index.css') }}" />
-    <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/style.css') }}" />
+    <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/base.css') }}" />
+    <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/index.css') }}" />
 
 </head>
 <body>
 {% block body %}
-
+<div id="container">
+    <div id="header">
+        <a id="header_logo" href="/">{{ logoTitle }}</a>
+        <div id="header_title">广东省重点实验室 国家高性能计算深圳中心</div>
+        <div id="header_link">
+            <ul class="top-link">
+                <li class="first"><a href="/nhpcc">内部网</a></li>
+                <li><a href="/contact">联系我们</a></li>
+            </ul>
+        </div>
+        <div id="header_search">
+            <form name="formLogin" method="post" action="/search">
+                <input type="text" value="请输入您要搜索的关键词" onfocus="this.value=''" onblur="if(this.value==''){this.value='请输入您要搜索的关键词';}" name="Keyword" class="stext">
+                <input type="submit" value="搜索" class="sbtn">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
 </body>
 </html>

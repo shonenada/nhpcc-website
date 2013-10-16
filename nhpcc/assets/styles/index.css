@@ -1,0 +1,13 @@
+﻿ul.top-link li{
+	display: inline;
+}
+
+ul.top-link li.first:before{
+	content: '';
+    margin: 0px 0px 0px 5px;
+}
+
+ul.top-link li:before{
+	content: '|';
+    margin:0px 5px 0px 5px;
+}
