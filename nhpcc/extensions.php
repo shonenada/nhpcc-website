@@ -9,10 +9,10 @@ function setup_views($app){
 
     $view->parserExtensions = array(
         new \Slim\Views\TwigExtension(),
-    );   
+    );
 
     $twigEnv = $view->getEnvironment();
-    $global_vars = require_once(APPROOT. 'config/view_global_vars.php');
+    $global_vars = require_once(APPROOT. 'config/twig/global.php');
     foreach($global_vars as $key => $value){
         $twigEnv->addGlobal($key, $value);
     }

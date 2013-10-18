@@ -1,1 +1,84 @@
 {% extends 'base.html' %}
+{% block main %}
+<div id="main">
+    <div id="left">
+        <h2>信息简报 <span>News</span></h2>
+        <div id="slider_box">
+            <div id="slider" style="visibility: hidden;">
+                <div class="loading">请稍候...</div>
+                <ul class="pic">
+                {% for s in sliders %}
+                    <li>
+                        <img src="{{s.url}}" alt="{{s.title}}" title="{{s.title}}" />
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+            <ul class="slider_list">
+            {% for n in news %}
+                <li>
+                    <span>{{n.create}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+        <div style="clear:both;"></div>
+
+        <div id="notice_box" class="box">
+            <h3>通知公告</h3>
+            <div id="notice">
+                <ul class="notice_list" id="ulid">
+                {% for n in notice %}
+                    <li>
+                        <span>{{n.create}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+                <script language=javascript>
+                    new Marquee(["hot_title", "ulid"],0,1,290,320,80,0,0);
+                </script>
+            </div>
+        </div>
+
+        <div id="activity_box" class="box">
+            <h3>学术活动</h3>
+            <div class="activity">
+                <ul class="activity_list">
+                {% for a in activity %}
+                    <li><span>{{a.create}}</span><a href='/article/{{a.id}}' title='{{a.title}}' >{{a.title}}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+
+    <div id="right">
+        <div id="intro_box">
+            <h3>院士介绍</h3>
+            <div id="person_intro">
+                    <img src="/static/images/uploads/index/chenguoliang.jpg" width="100" height="134" />
+                    {{ global.static_contents.index_intro }}<br />
+                    <a href="/overview/team/chen" class="more">详细了解</a>
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+
+        <h4>快速链接</h4>
+        <div id="links_box">
+            {% for l in global.links.main %}
+            <p>
+                <a href="{{ l.url }}" style="background: url({{l.pic}})" title="{{ l.title }}" alt="{{l.title}}" class="{{l.name}}" target="_blank">{{ l.title }}</a>
+            </p>
+            {% endfor %}
+            <br />
+            <select onchange="if (this.options(this.selectedIndex).value!='#') window.open(this.options(this.selectedIndex).value);">
+            <option value="#" selected="selected">======= 友情链接 =======</option>
+            {% for o in global.links.sub %}
+                <option value="{{o.url}}">{{o.title}}</option>
+            {% endfor %}                
+            </select>
+        </p>
+    </div>
+</div>
+{% endblock %}
