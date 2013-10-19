@@ -1,6 +1,7 @@
 <?php
 
 require_once(APPROOT. "extensions.php");
+require_once(APPROOT. "controller.php");
 
 // Create app using factory.
 function create_app($config_filename="config.php"){
@@ -8,6 +9,7 @@ function create_app($config_filename="config.php"){
     $app = new \Slim\Slim($config);
 
     setup_views($app);
+    init_controllers($app);
 
     return $app;
 }
