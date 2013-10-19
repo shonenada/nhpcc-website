@@ -1,1 +1,257 @@
-﻿
+/* Waiting for refactoring */
+#main{
+    zoom: 1;
+    overflow: hidden;
+    width: 1000px;
+    margin: 6px auto 4px auto;
+}
+
+#left{
+    width: 728px;
+    float: left;
+    text-align: left;
+}
+
+#left h2{
+    color: #fff;
+    line-height: 34px;
+    text-indent: 22px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    background: url(/static/images//h3bg3.jpg) left top no-repeat;
+}
+
+#left h2 span{
+    font-size: 9px;
+}
+
+#slider_box{
+    padding: 10px 0px 0 0px;
+}
+
+#slider{
+    float: left;
+    padding: 1px;
+    border: solid 1px #ccc;
+    background-color: #fff;
+    margin-top: 5px;
+}
+
+#slider_box .slider_list{
+    width: 405px;
+    float: right;
+}
+
+#slider_box .slider_list li{
+    overflow: hidden;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    text-align: left;
+    text-indent: 8px;
+    background: url(/static/images/icon3.gif) no-repeat 0 16px;
+    border-bottom: 1px dashed #aaa
+}
+
+#slider_box .slider_list li span{
+    float: right;
+    color: #9DA19F;
+    font: 12px/38px Arial,sans-serif;
+}
+
+#slider_box .slider_list:visited,
+#slider_box .slider_list a{
+    color:#213e44;
+}
+
+#slider_box .slider_list a:hover{
+    color:#c20101;
+}
+
+#notice_box{
+    width: 358px;
+    float: left;
+    padding-top: 19px;
+}
+
+.box h3{
+    width: 358px;
+    height: 30px;
+    line-height: 30px;
+    padding-top: 4px;
+    color: #333;
+    text-align: left;
+    text-indent: 26px;
+    font-size: 14px;
+    font-weight: bold;
+    background: #fff url(/static/images/h3bg4.jpg) left top no-repeat;
+}
+
+.notice_box{
+    width: 356px;
+    height: 340px;
+    margin-bottom: 10px;
+    border: solid 1px #dadada;
+    border-top-width: 0px;
+    background: url(/static/images/noticebg.jpg) repeat-x 0 0;
+}
+
+#notice{
+    width: 290px;
+    margin: 0 auto;
+}
+
+#notice .notice_list{
+    width: 240px;
+    float: right;
+    overflow: hidden;
+}
+
+#notice .notice_list li{
+    overflow: hidden;
+    height: 28px;
+    line-height: 34px;
+    font-size: 12px;
+    text-align: left;
+    text-indent: 8px;
+    background:url(/static/images/icon2.jpg) no-repeat 0 12px;
+}
+
+#notice .notice_list li span{
+    float: right;
+    color: #9DA19F;
+    font: 12px/38px Arial, sans-serif;
+}   
+
+#notice .notice_list:visited,
+#notice .notice_list a{
+    color: #676767;
+}
+
+#notice #hot_title .notice_list a:hover{
+    color: #c20101;
+}
+
+#activity_box{
+    width: 358px;
+    float: right;
+    padding-top: 19px;
+}
+
+.activity_list{
+    margin: 0px auto;
+    width: 334px;
+}
+
+.activity_list li{
+    overflow: hidden;
+    height: 29px;
+    line-height: 28px;
+    font-size: 12px;
+    text-align: left;
+    text-indent: 10px;
+    background: url(/static/images/icon6.jpg) no-repeat 0 12px;
+}
+
+.activity_list li span{
+    float: right;
+    color: #999;
+    font-size: 12px;
+}
+
+.activity_list:visited,
+.activity_list a{
+    color: #252525;
+}
+
+.activity_list a:hover{
+    color: #c20101;
+}
+
+
+#right{
+    width: 259px;
+    float: right;
+}
+
+#right h4{
+    width: 259px;
+    height: 34px;
+    line-height: 34px;
+    color: #1e344f;
+    text-indent: 18px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    background: url(/static/images/h3bg2.jpg) left top no-repeat;
+}
+
+#right h4 span{
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+    padding-left: 2px;
+}
+
+
+#intro_box{
+    width: 259px;
+    float: right;
+    padding-top: 8px;
+    margin-bottom: 17px;
+}
+
+#intro_box #person_intro{
+    height: 220px;
+    width: 237px;
+    text-indent: 2em;
+    text-align: left;
+    padding: 10px;
+    border: solid 1px #dadada;
+    border-top-width: 0px;
+    background: #fff;
+}
+
+#intro_box img{
+    float: left;
+    margin: 0 3px 0 0;
+}
+
+#intro_box h3{
+    width: 260px;
+    height: 30px;
+    line-height: 30px;
+    padding-top: 4px;
+    color: #333;
+    text-align: left;
+    text-indent: 26px;
+    font-size: 14px;
+    font-weight: bold;
+    background:#fff url(/static/images/h3bg2.jpg) left top no-repeat;
+}
+
+#person_intro .more{
+    float: right;
+    font-size: 1.2em;
+    color: red;
+}
+
+#links_box{
+    border: solid 1px #dadada;
+    border-top-width: 0px;
+}
+
+#links_box p{
+    text-align: center;
+    padding-top: 10px;
+}
+
+#links_box a{
+    width: 237px;
+    height: 62px;
+    line-height: 0;
+    text-indent: -9999px;
+    display: block;
+    margin: auto;
+}
