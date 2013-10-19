@@ -72,14 +72,13 @@
             </p>
             {% endfor %}
             <br />
-            <select onchange="if (this.options(this.selectedIndex).value!='#') window.open(this.options(this.selectedIndex).value);">
-            <option value="#" selected="selected">======= 友情链接 =======</option>
-            {% for o in global.links.sub %}
+            <select onchange="if (this.value!='#') window.open(this.value);">
+                <option value="#" selected="selected">======= 友情链接 =======</option>
+                {% for o in global.links.sub %}
                 <option value="{{o.url}}">{{o.title}}</option>
-            {% endfor %}                
+                {% endfor %}
             </select>
-        </p>
+        </div>
     </div>
-</div>
 </div>
 {% endblock %}

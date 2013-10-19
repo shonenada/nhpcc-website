@@ -1,15 +1,9 @@
 <?php
 
 return array("main" => array(
-        array("name" => "schpc", "title" => "深圳大学高性能计算特色班",
-              "url" => "http://csse.szu.edu.cn/su/schpc/",
-              "pic" => "/static/images/uploads/links/btn1.gif"),
-        array("name" => "csse", "title" => "深圳大学计算机与软件学院",
-              "url" => "http://csse.szu.edu.cn/",
-              "pic" => "/static/images/uploads/links/btn2.gif"),
-        array("name" => "szu", "title" => "深圳大学",
-              "url" => "http://www.szu.edu.cn/",
-              "pic" => "/static/images/uploads/links/btn3.gif"),
+        array("name" => "szu", "title" => "深圳大学", "url" => "http://www.szu.edu.cn/", "pic" => "/static/images/uploads/links/btn3.gif"),
+        array("name" => "csse", "title" => "深圳大学计算机与软件学院", "url" => "http://csse.szu.edu.cn/", "pic" => "/static/images/uploads/links/btn2.gif"),
+        array("name" => "schpc", "title" => "深圳大学高性能计算特色班", "url" => "http://csse.szu.edu.cn/su/schpc/", "pic" => "/static/images/uploads/links/btn1.gif"),
     ),
     "sub" => array(
         array("title" => "中华人民共和国教育部", "url" => "http://www.moe.edu.cn"),

@@ -248,15 +248,6 @@ ul.top-link li:before{
 	background: #5e777e url(/static/images/bannerbg.jpg) center top repeat-x;
 }
 
-#footer_link{
-	width: 998px;
-	border: solid 1px #ddd;
-	padding: 5px 0;
-	clear: both;
-	height: 20px;
-	color: #888;
-}
-
 #footer{
 	width: 1000px;
 	margin: 0 auto;
@@ -269,12 +260,16 @@ ul.top-link li:before{
 	color: #999;
 	overflow: auto;
 	text-align: center;
+	margin-top: 20px;
 }
 
-.copyright{
-	font-family: arial;
-	font-size: 12px;
-	color: #999;
+#footer_link{
+	width: 998px;
+	border: solid 1px #ddd;
+	padding: 5px 0;
+	clear: both;
+	height: 20px;
+	color: #888;
 }
 
 #footer a{
@@ -284,4 +279,10 @@ ul.top-link li:before{
 
 #footer a:hover{
 	color:#f00;
+}
+
+.copyright{
+	font-family: arial;
+	font-size: 12px;
+	color: #999;
 }
