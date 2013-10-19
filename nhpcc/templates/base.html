@@ -4,12 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="Content-Language" content="zh-CN" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>{{ global.webTitle }}</title>
+    <title>{% if webTitle %}{{ webTitle }} - {% endif %}{{ global.webTitle }}</title>
     <meta name="keywords" content="{{ global.webKeywords }}" />
     <meta name="description" content="{{ global.webDescription }}" />
     <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/components/reset-css/index.css') }}" />
     <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/base.css') }}" />
-    <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/index.css') }}" />
+    <script src="{{siteUrl('static/components/jquery/jquery.min.js')}}" language="javascript" type="text/javascript"></script>
+    {% block htmlhead %}
+    {% endblock %}
 </head>
 <body>
 {% block body %}
@@ -33,13 +35,13 @@
     </div>
     <div id="menu">
         <ul id='nav'>
-            {% for item in global.categories %}
+            {% for name, item in global.categories %}
             <li>
-                <a href="{{item.link}}" {%- if item.id %}id="{{item.id}}"{%- endif %} alt="{{item.title}}">{{item.title}}</a>
+                <a href="{{item.url}}" {%- if item.id %}id="{{item.id}}"{%- endif %} alt="{{item.title}}">{{item.title}}</a>
                 {% if item.sub %}
                 <ul>
                 {% for sub in item.sub %}
-                    <li><a href="{{sub.link}}" alt="{{sub.title}}">{{sub.title}}</a></li>
+                    <li><a href="{{sub.url}}" alt="{{sub.title}}">{{sub.title}}</a></li>
                 {% endfor %}
                 </ul>
                 {% endif %}
