@@ -17,7 +17,7 @@ $(function(){
 <div id="sub_main">
     <div id="menu_box">
         <div class="wrapper">
-            <div id="menu_title">{{nav.name}}</div>
+            <div id="menu_title">{{nav.title}}</div>
             <ul class="menu">
             {% for l in categories %}
                 <li class="sub_list">
@@ -29,17 +29,15 @@ $(function(){
     </div>
 
     <div id="content_box">
-        <div class="wrapper">
-            <ul id="crumbs">
-                <li><a href="/">首页</a></li>
-                <li><a href="/{{nav.base}}">{{nav.name}}</a></li>
-                <li><a href="/{{nav.base}}/{{sub.url}}">{{sub.name}}</a></li>
-            </ul>
-            <div id="content">
-                <div id="content_title"> {{ article.title }}</div>
-                <div id="content_body">
-                    {{ article.content }}
-                </div>
+        <ul id="crumbs">
+            <li><a href="/">首页</a></li>
+            <li><a href="{{nav.url}}">{{nav.title}}</a></li>
+            <li><a href="{{sub.url}}">{{sub.title}}</a></li>
+        </ul>
+        <div id="content">
+            <div id="content_title">{{ article.title }}</div>
+            <div id="content_body">
+                {{ article.content|raw }}
             </div>
         </div>
     </div>

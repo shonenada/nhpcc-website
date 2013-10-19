@@ -9,13 +9,4 @@ require_once(PKGROOT. "autoload.php");
 require_once(APPROOT. "app.php");
 
 $app = create_app();
-
-$app->get("/", function() use ($app){
-    $app->render("index.html");
-});
-
-$app->get("/overview", function() use($app){
-    $app->render("sub.html");
-});
-
 $app->run();

@@ -12,7 +12,7 @@ function setup_views($app){
     );
 
     $twigEnv = $view->getEnvironment();
-    $global_vars = require_once(APPROOT. 'config/twig/global.php');
+    $global_vars = require_once(APPROOT. 'config/twig.php');
     foreach($global_vars as $key => $value){
         $twigEnv->addGlobal($key, $value);
     }
