@@ -6,12 +6,16 @@ define("APPROOT", realpath(DOCROOT. "nhpcc/"). DIRECTORY_SEPARATOR);
 define("WEBROOR", realpath(DOCROOT. "wwwroot/"). DIRECTORY_SEPARATOR);
 
 require_once(PKGROOT. "autoload.php");
-require_once(APPROOT. 'app.php');
+require_once(APPROOT. "app.php");
 
 $app = create_app();
 
-$app->get('/', function() use ($app){
+$app->get("/", function() use ($app){
     $app->render("index.html");
+});
+
+$app->get("/overview", function() use($app){
+    $app->render("sub.html");
 });
 
 $app->run();
