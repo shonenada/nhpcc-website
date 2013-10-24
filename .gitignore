@@ -2,4 +2,5 @@ composer.lock
 
 nhpcc/cache/
 nhpcc/assets/components
+nhpcc/config/database.php
 wwwroot/static
