@@ -1,0 +1,11 @@
+<?php
+
+// Options for views
+
+return array(
+    'dbname' => 'nhpcc',
+    'user' => 'root',
+    'password' => '',
+    'host' => 'localhost',
+    'driver' => 'pdo_mysql'
+);

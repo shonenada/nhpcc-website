@@ -10,8 +10,9 @@ function create_app($config_filename="custom.php"){
     $custom = require_once(APPROOT. "config/". $config_filename);
     $app = new \Slim\Slim($config);
 
-    setup_views($app);
     setup_hooks($app);
+    setup_views($app);
+    setup_database($app);
     init_controllers($app);
 
     return $app;
