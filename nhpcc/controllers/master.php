@@ -1,10 +1,20 @@
 <?php
 
-return array(
-    "export" => function($app){
+require_once(APPROOT . "models/user.php");
 
-        $app->get("/", function() use ($app){
+return array(
+    "export" => function($app) {
+
+        $app->get("/", function() use ($app) {
             $app->render("index.html");
+        });
+
+        $app->get("/login", function() use ($app) {
+            $app->render("login.html");
+        });
+
+        $app->post("/login", function() use ($app) {
+          
         });
 
     }

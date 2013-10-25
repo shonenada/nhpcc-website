@@ -5,7 +5,8 @@ $everyone = new EveryOne();
 
 return array(
     "allow" => array(
-        array($everyone, "/", "GET"),
+        array($everyone, "/", "*"),
+        array($everyone, "/login", "*"),
     ),
     "deny" => array(
     )
