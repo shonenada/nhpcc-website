@@ -1,5 +1,7 @@
 <?php
 
+require_once(APPROOT. "models/ModelBase.php");
+
 /** 
  * @Entity 
  * @Table(name="user")
@@ -13,7 +15,7 @@
  * @property integer   $level
  **/
 
-class User{
+class User extends ModelBase{
     
     /**
      * @Column(name="id", type="integer")

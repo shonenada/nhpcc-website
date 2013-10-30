@@ -12,7 +12,6 @@ function create_app($config_filename="custom.php"){
 
     setup_hooks($app);
     setup_views($app);
-    setup_database($app);
     init_controllers($app);
 
     return $app;
