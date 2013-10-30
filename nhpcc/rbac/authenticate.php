@@ -16,21 +16,21 @@ class Authentication{
 
     public function accessiable(User $user=null, $resource=null, $method=null){
 
-        $auth = function(Role $r=null, User $u=null, $res=null){
-            return $r ? $r->authenticate($u, $res) : false;
+        $auth = function(Role $r=null, User $u=null){
+            return $r ? $r->authenticate($u) : false;
         };
 
         $allow = array_filter($this->ptable, function($i)use($user, $resource, $method, $auth){
             return $resource == $i['resource']
                 && ('*' == $i['method'] || $i['method'] == $method)
-                && $auth($i['role'], $user, $resource)
+                && $auth($i['role'], $user)
                 && $i['action'] == 'allow';
         });
         
         $deny = array_filter($this->ptable, function($i)use($user, $resource, $method, $auth){
             return $resource == $i['resource']
                 && ('*' == $i['method'] || $i['method'] == $method)
-                && $auth($i['role'], $user, $resource)
+                && $auth($i['role'], $user)
                 && $i['action'] == 'deny';
         });
         return (!empty($allow) && empty($deny));
