@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='zh-CN' xml:lang='zh-CN' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>管理系统</title>
+    <link href="/static/styles/admin/layout.css" media="all" rel="stylesheet" type="text/css" />
+    <!--[if IE]>
+    <link href="/static/styles/admin/ie-fix.css" media="all" rel="stylesheet" type="text/css" />
+    <![endif]--> 
+    
+</head>
+<body>
+    <div id="layout_nav" class="layout_box">
+        <h1>后台管理系统</h1>(Beta)
+        <span id="nav_menu">
+            <span><strong>{{ user.name }}</strong> 已登录</span>
+            <span class="splite_line">|</span>
+            <a href="/">返回首页</a>
+            <a href="javascript:;" onclick="">退出登录</a>
+            </span>
+    </div>
+    <div id="layout_main" class="layout_box">
+        <div id="layout_left">
+            <ul class="block_menu">
+                <li><a href="/admin">运行状态</a></li>
+                <li><a href="/admin/accounts">用户管理</a></li>
+            </ul>
+        </div>
+        <div id="layout_content">
+        
+        
+        </div>
+    </div>
+    <div id="layout_foot" class="layout_box">
+        <p>Power By <strong>shonenada</strong></p>
+        <p>Copyright &copy;<span class="splite_line">2010-2013</span>nhpcc</p>
+    </div>
+</body>
+</html>
