@@ -3,4 +3,5 @@ composer.lock
 nhpcc/cache/
 nhpcc/assets/components
 nhpcc/config/database.php
+nhpcc/config/development.php
 wwwroot/static
