@@ -1,6 +1,5 @@
 <?php
-require_once(APPROOT . "models/user.php");
-require_once(APPROOT . "models/news.php");
+require_once(APPROOT . "models/User.php");
 
 return array(
     "export" => function($app) {
