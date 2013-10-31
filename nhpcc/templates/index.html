@@ -20,7 +20,7 @@
             <ul class="slider_list">
             {% for n in news %}
                 <li>
-                    <span>{{n.create}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
+                    <span>{{n.create|date('m-d')}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
                 </li>
             {% endfor %}
             </ul>

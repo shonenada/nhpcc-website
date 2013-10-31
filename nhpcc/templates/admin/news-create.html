@@ -1,0 +1,61 @@
+{% import 'tools/admin-tools.twig' as tool %}
+{% extends 'admin/base.html' %}
+
+{% block headhtml %}
+<link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<style>
+#news-list{
+    margin: 0 auto;
+}
+#news-list li{
+    line-height: 30px;
+}
+#news-list #btns{
+    text-align: right;
+    width: 100%;
+}
+#news-list label{
+    width: 200px;
+    display: inline-block;
+    text-align: right;
+}
+#news-list span{
+    width: 300px;
+    display: inline-block;
+    text-align: left;
+}
+</style>
+<script type="text/javascript">
+$('#news_create_form').ajaxForm({
+    dataType:'json',
+    success: function(response){
+        if (response.success) {
+            $S.redirect("/admin/news", 10);
+        }else{
+            $S.alert(response.message.join('，'),2000);
+        }
+    },
+    error: function() {
+        $S.error('发生技术问题，导致你的操作失败。请联系管理员！');
+    }
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>信息管理  &amp; Manage News</h2>
+<div id="news-list">
+<form action="/admin/news" method="post" id="news_create_form">
+    <ul>
+        <li><label>标题：</label> <input type="text" value="" name="title" /></li>
+        <li><label>内容：</label> <br />
+        <textarea cols="100" rows="10" name="content"></textarea></li>
+        </li>
+    </ul>
+    <div id="btns">
+        <input type="submit" value="添加" />
+        <input type="button" value="取消" onclick="location.href='/admin/news';"/>
+    </div>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% import 'tools/admin-tools.twig' as tool %}
+{% extends 'admin/base.html' %}
+
+{% block headhtml %}
+<link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<script>
+$(function(){
+    $(".btn-remove").click(function(){
+        id = $(this).attr("id").replace("oid-", '');
+        $.ajax({
+            url: '/admin/news/' + id,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function(response){
+                if (response.success) {
+                    $S.redirect("/admin/news");                    
+                }else{
+                    $S.alert(response.message.join('，'),2000);
+                }
+            },
+            error: function() {
+                $S.error('发生技术问题，导致你的操作失败。请联系管理员！');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<span style="float: left;"><a href="/admin/news/create">发布信息</a></span> <h2>信息管理  &amp; Manage Info</h2>
+<ul>
+    <li>
+        <div style="width:25%">标题</div>
+        <div style="width:25%">作者</div>
+        <div style="width:25%">时间</div>
+        <div style="width:20%">操作</div>
+    </li>
+    {% for u in news %}
+        <li>
+        <a href="/admin/news/{{u.id}}">
+            <div style="width:25%">{{ u.title }}</div>
+            <div style="width:25%">{{ u.author.name }}</div>
+            <div style="width:25%">{{ u.created|date("Y-m-d H:i:s") }}</div>
+        </a>
+        <div style="width:20%"><button onclick="location.href='/admin/news/{{u.id}}/edit'" >修改</button> | <button class="btn-remove" id="oid-{{u.id}}">删除</button></div>
+        </li>
+    {% endfor %}
+</ul>
+<div id="pageline">
+</div>
+{% endblock %}
