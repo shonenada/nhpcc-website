@@ -1,5 +1,7 @@
 <?php
 
+require_once(APPROOT. "models/ModelBase.php");
+
 /** 
  * @Entity 
  * @Table(name="user")
@@ -8,17 +10,18 @@
  * @property string    $username
  * @property string    $password
  * @property string    $name
+ * @property datetime  $created
  * @property datetime  $lastLogin
  * @property string    $ip
  * @property integer   $level
  **/
 
-class User{
+class User extends ModelBase{
     
     /**
-     * @Column(name="id", type="integer")
+     * @Column(name="id", type="integer", nullable=false)
      * @Id
-     * @GenerateValue(strategy="SEQUENCE")
+     * @GeneratedValue
      **/
     private $id;
 
@@ -36,6 +39,11 @@ class User{
      * @Column(name="name", type="string", length=10)
      **/
     private $name;
+
+    /**
+     * @Column(name="created", type="datetime")
+     **/
+    private $created;
 
     /**
      * @Column(name="lastLogin", type="datetime")
@@ -60,12 +68,21 @@ class User{
         return $this->username;
     }
 
+    public function setPassword($raw, $salt) {
+        $hashPassword = User::hashPassword($raw, $salt);
+        $this->password = $hashPassword;
+    }
+
     public function getName() {
         return $this->name;
     }
 
     public function setName($name) {
         $this->name = $name;
+    }
+
+    public function getCreated() {
+        return $this->created;
     }
 
     public function getLastLogin() {
@@ -88,6 +105,10 @@ class User{
         return $this->level;
     }
 
+    public function setLevel($level) {
+        $this->level = $level;
+    }
+
     public function __construct($username) {
         $this->username = $username;
     }
@@ -103,9 +124,24 @@ class User{
         }
     }
 
-    static public function hashPassword($passowrd, $salt){
-        $hash = md5("{$salt}{$passowrd}{$salt}");
+    static public function hashPassword($password, $salt){
+        $hash = md5("{$salt}{$password}{$salt}");
         return $hash;
+    }
+
+    static public function getList($page=1, $pagesize=20, $asc=false) {
+        $dql = sprintf(
+            'SELECT n FROM %s n WHERE n.level > 0'.
+            'ORDER BY n.id %s', 
+            get_called_class(),
+            $asc ? 'ASC' : 'DESC'
+        );
+        $query = static::em()->createQuery($dql)->setMaxResults($pagesize)->setFirstResult($pagesize*($page-1));
+        return $query->useQueryCache(false)->getResult();
+    }
+
+    static public function findByUsername($username){
+        return static::query()->findBy(array('username' => $username));
     }
 
 }

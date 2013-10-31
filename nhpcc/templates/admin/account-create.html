@@ -1,0 +1,71 @@
+{% import 'tools/admin-tools.twig' as tool %}
+{% extends 'admin/base.html' %}
+
+{% block headhtml %}
+<link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<style>
+#user-list{
+    width: 600px;
+    margin: 0 auto;
+}
+#user-list li{
+    line-height: 30px;
+}
+#user-list #btns{
+    text-align: right;
+    width: 100%;
+}
+#user-list label{
+    width: 200px;
+    display: inline-block;
+    text-align: right;
+}
+#user-list span{
+    width: 300px;
+    display: inline-block;
+    text-align: left;
+}
+</style>
+<script type="text/javascript">
+$('#user_create_form').ajaxForm({
+    dataType:'json',
+    success: function(response){
+        if (response.success) {
+            $S.notice(response.message.join('，'),2000);
+            $S.redirect("/admin/account", 3000);
+        }else{
+            $S.alert(response.message.join('，'),2000);
+        }
+    },
+    error: function() {
+        $S.error('发生技术问题，导致你的操作失败。请联系管理员！');
+    }
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>用户管理  &amp; Manage Account</h2>
+<div id="user-list">
+<form action="/admin/account" method="post" id="user_create_form">
+    <ul>
+        <li><label>用户名：</label> <input type="text" value="" name="username" /></li>
+        <li><label>姓名：</label> <input type="text" value="" name="name" /></li>
+        <li><label>密码：</label> <input type="password" value="" name="password" /></li>
+        <li><label>身份：</label>
+            <select name="level">
+                <option value="1">普通用户</option>
+                <option value="3">学生</option>
+                <option value="5">教师</option>
+                <option value="9">超级用户</option>
+                <option value="15">管理员</option>
+            </select>
+        </li>
+    </ul>
+    <div id="btns">
+        <input type="submit" value="添加" />
+        <input type="button" value="取消" onclick="location.href='/admin/account';"/>
+    </div>
+</form>
+</div>
+{% endblock %}

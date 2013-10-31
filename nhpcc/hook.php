@@ -9,13 +9,13 @@ function setup_hooks($app){
         $uid = $app->getCookie("user_id");
         $token = $app->getCookie("token");
         if(isset($uid)){
-            $u = $app->environment['em']->find("User", $uid);
+            $u = User::find($uid);
             $user = User::validateToken($u, $token, $salt);
         }else{
             $user = NULL;
         }
         $app->environment['user'] = $user;
-        viewAddGlobal($app, 'user', $user);
+        viewAddGlobal($app, 'currentUser', $user);
     });
 
     $app->hook("slim.before.dispatch", function() use ($app){

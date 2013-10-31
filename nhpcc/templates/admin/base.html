@@ -5,32 +5,55 @@
     <meta http-equiv="Content-Language" content="zh-CN" />
     <meta name="robots" content="noindex,nofollow" />
     <title>管理系统</title>
+    <script src="{{siteUrl('static/components/jquery/jquery.min.js')}}" language="javascript" type="text/javascript"></script>
+    <script src="{{siteUrl('static/scripts/jquery.tools.min.js')}}" language="javascript" type="text/javascript"></script>
+    <script src="{{siteUrl('static/scripts/jquery.form.js')}}" language="javascript" type="text/javascript"></script>
+    <script src="{{siteUrl('static/scripts/global.js')}}" language="javascript" type="text/javascript"></script>
+    <script src="{{siteUrl('static/scripts/account.js')}}" language="javascript" type="text/javascript"></script>
+    <link href="/static/styles/message_box.css" media="all" rel="stylesheet" type="text/css" />
     <link href="/static/styles/admin/layout.css" media="all" rel="stylesheet" type="text/css" />
     <!--[if IE]>
     <link href="/static/styles/admin/ie-fix.css" media="all" rel="stylesheet" type="text/css" />
     <![endif]--> 
-    
+    <script type="text/javascript">
+    $(function(){
+        // 捕获当前 url 和 tab 的 url
+        // 如果 tab-url 在 document-url 中出现（字符串匹配）
+        // 则认为 tab-url 对应当前页面
+        // 为 tab-url 对应的 li 节点添加 class="current" 样式
+        var thisUrl = document.location.toString().toLowerCase();
+        var group   = $('ul.block_menu li').children('a');
+        var i = 0;
+        for(i=0;i<group.length;i++){
+            var cursorUrl = group[i];
+            if ( thisUrl == cursorUrl ) {
+                $(group[i]).parent('li').addClass('current');
+            }
+        }
+    });
+    </script>
+    {% block headhtml %}{% endblock %}
 </head>
 <body>
     <div id="layout_nav" class="layout_box">
         <h1>后台管理系统</h1>(Beta)
         <span id="nav_menu">
-            <span><strong>{{ user.name }}</strong> 已登录</span>
+            <span><strong>{{ currentUser.name }}</strong> 已登录</span>
             <span class="splite_line">|</span>
             <a href="/">返回首页</a>
-            <a href="javascript:;" onclick="">退出登录</a>
+            <a href="javascript:;" class="logout-btn">退出登录</a>
             </span>
     </div>
     <div id="layout_main" class="layout_box">
         <div id="layout_left">
             <ul class="block_menu">
-                <li><a href="/admin">运行状态</a></li>
-                <li><a href="/admin/accounts">用户管理</a></li>
+                <li><a href="/admin/status">运行状态</a></li>
+                <li><a href="/admin/account">用户管理</a></li>
+                <li><a href="/admin/news">信息简报</a></li>
             </ul>
         </div>
         <div id="layout_content">
-        
-        
+        {% block content %}{% endblock %}
         </div>
     </div>
     <div id="layout_foot" class="layout_box">

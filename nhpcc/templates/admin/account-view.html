@@ -1,0 +1,83 @@
+{% import 'tools/admin-tools.twig' as tool %}
+{% extends 'admin/base.html' %}
+
+{% block headhtml %}
+<link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<style>
+#user-list{
+    width: 600px;
+    margin: 0 auto;
+}
+#user-list li{
+    line-height: 30px;
+}
+#user-list #btns{
+    text-align: right;
+    width: 100%;
+}
+#user-list label{
+    width: 200px;
+    display: inline-block;
+    text-align: right;
+}
+#user-list span{
+    width: 300px;
+    display: inline-block;
+    text-align: left;
+}
+</style>
+<script type="text/javascript">
+$('#user_edit_form').ajaxForm({
+    dataType:'json',
+    success: function(response){
+        if (response.success) {
+            $S.redirect("/admin/account", 0);
+        }else{
+            $S.alert(response.message.join('，'),2000);
+        }
+    },
+    error: function() {
+        $S.error('发生技术问题，导致你的操作失败。请联系管理员！');
+    }
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>用户管理  &amp; Manage Account</h2>
+<div id="user-list">
+<form action="/admin/account/{{queryUser.id}}/edit" method="put" id="user_edit_form">
+    <ul>
+    {% if action == 'view' %}
+        <li><label>用户名：</label> <span>{{ queryUser.username }}</span></li>
+        <li><label>姓名：</label> <span>{{ queryUser.name }}</span></li>
+        <li><label>身份：</label> <span>{{ tool.getRole(queryUser.level) }}</span></li>
+        <li><label>最后登录时间：</label> <span>{{ queryUser.lastLogin|date('Y-m-d H:i:s') }}</span></li>
+        <li><label>最后登录IP：</label> <span>{{ queryUser.ip }}</span></li>
+    {% elseif action == 'edit' %}
+        <li><label>用户名：</label> {{ queryUser.username }}</li>
+        <li><label>姓名：</label> {{ queryUser.name }}</li>
+        <li><label>身份：</label>
+            <select name="level">
+                <option value="1">普通用户</option>
+                <option value="3" {% if queryUser.level == 3 %}selected="selected"{% endif %}>学生</option>
+                <option value="5" {% if queryUser.level == 5 %}selected="selected"{% endif %}>教师</option>
+                <option value="9" {% if queryUser.level == 9 %}selected="selected"{% endif %}>超级用户</option>
+                <option value="15" {% if queryUser.level == 15 %}selected="selected"{% endif %}>管理员</option>
+            </select>
+        </li>
+        <li><label>最后登录时间：</label> {{ queryUser.lastLogin|date('Y-m-d H:i:s') }}</li>
+        <li><label>最后登录IP：</label> {{ queryUser.ip }}</li>
+    {% endif %}
+    </ul>
+    <div id="btns">
+        {% if action == 'view' %}
+        <a href="/admin/account/{{queryUser.id}}/edit">编辑</a>
+        {% elseif action == 'edit' %}
+        <input type="submit" value="修改" />
+        <input type="button" value="取消" onclick="location.href='/admin/account/{{queryUser.id}}';"/>
+        {% endif %}
+    </div>
+</form>
+</div>
+{% endblock %}
