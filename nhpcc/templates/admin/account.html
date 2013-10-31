@@ -1,0 +1,52 @@
+{% import 'tools/admin-tools.twig' as tool %}
+{% extends 'admin/base.html' %}
+
+{% block headhtml %}
+<link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<script>
+$(function(){
+    $(".btn-remove-user").click(function(){
+        id = $(this).attr("id").replace("user-", '');
+        $.ajax({
+            url: '/admin/account/{{queryUser.id}}',
+            type: 'DELETE',
+            dataType: 'json',
+            success: function(response){
+                if (response.success) {
+                    $S.notice(response.message.join('，'),2000);
+                }else{
+                    $S.alert(response.message.join('，'),2000);
+                }
+            },
+            error: function() {
+                $S.error('发生技术问题，导致你的操作失败。请联系管理员！');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>用户管理  &amp; Manage Account</h2>
+<ul>
+    <li>
+        <div style="width:25%">用户名</div>
+        <div style="width:25%">姓名</div>
+        <div style="width:25%">身份</div>
+        <div style="width:20%">操作</div>
+    </li>
+    {% for u in users %}
+        <li>
+        <a href="/admin/account/{{u.id}}">
+            <div style="width:25%">{{ u.username }}</div>
+            <div style="width:25%">{{ u.name }}</div>
+            <div style="width:25%">{{ tool.getRole(u.level) }}</div>
+        </a>
+        <div style="width:20%"><button class="btn-remove-user" id="user-{{u.id}}" href="javascript:void(0);">删除</button></div>
+        </li>
+    {% endfor %}
+</ul>
+<div id="pageline">
+</div>
+{% endblock %}
