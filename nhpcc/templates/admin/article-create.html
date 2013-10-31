@@ -4,33 +4,33 @@
 {% block headhtml %}
 <link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
 <style>
-#news-list{
+#article-list{
     margin: 0 auto;
 }
-#news-list li{
+#article-list li{
     line-height: 30px;
 }
-#news-list #btns{
+#article-list #btns{
     text-align: right;
     width: 100%;
 }
-#news-list label{
+#article-list label{
     width: 200px;
     display: inline-block;
     text-align: right;
 }
-#news-list span{
+#article-list span{
     width: 300px;
     display: inline-block;
     text-align: left;
 }
 </style>
 <script type="text/javascript">
-$('#news_create_form').ajaxForm({
+$('#article_create_form').ajaxForm({
     dataType:'json',
     success: function(response){
         if (response.success) {
-            $S.redirect("/admin/news", 10);
+            $S.redirect("/admin/article", 10);
         }else{
             $S.alert(response.message.join('，'),2000);
         }
@@ -44,17 +44,23 @@ $('#news_create_form').ajaxForm({
 
 {% block content %}
 <h2>信息管理  &amp; Manage News</h2>
-<div id="news-list">
-<form action="/admin/news" method="post" id="news_create_form">
+<div id="article-list">
+<form action="/admin/article" method="post" id="article_create_form">
     <ul>
         <li><label>标题：</label> <input type="text" value="" name="title" /></li>
+        <li><label>类型：</label>
+        <select name="category">
+            <option value="1">新闻简报</option>
+            <option value="5">通知公告</option>
+            <option value="9">学术活动</option>    
+        </select>
         <li><label>内容：</label> <br />
         <textarea cols="100" rows="10" name="content"></textarea></li>
         </li>
     </ul>
     <div id="btns">
         <input type="submit" value="添加" />
-        <input type="button" value="取消" onclick="location.href='/admin/news';"/>
+        <input type="button" value="取消" onclick="location.href='/admin/article';"/>
     </div>
 </form>
 </div>

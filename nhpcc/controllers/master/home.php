@@ -1,13 +1,13 @@
 <?php
 require_once(APPROOT . "models/User.php");
-require_once(APPROOT . "models/News.php");
+require_once(APPROOT . "models/Article.php");
 require_once(APPROOT . "models/Slider.php");
 
 return array(
     "export" => function($app) {
         $app->get("/", function() use($app) {
             // 首页
-            $news = News::getList(1, 7);
+            $news = Article::getSpecList(Article::NEWS, 1, 7);
             $static_content = require(APPROOT. 'static_contents/contents.php');
             $links = require(APPROOT. 'static_contents/links.php');
             $academician_intro = $static_content['index_intro'];

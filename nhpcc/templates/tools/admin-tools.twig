@@ -11,3 +11,13 @@
 普通用户
 {% endif %}
 {%- endmacro -%}
+
+{%- macro getArticleType(num) -%}
+{% if num == 1 %}
+新闻简报
+{% elseif num == 5 %}
+通知公告
+{% elseif num == 9 %}
+学术活动
+{% endif %}
+{%- endmacro -%}
