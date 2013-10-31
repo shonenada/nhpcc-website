@@ -11,6 +11,8 @@
     width: 230px;
     background: #fafafa url(/static/images/listleftbg.jpg) 0 0 repeat-y;
     overflow: hidden;
+    padding-bottom: 10000px;
+    margin-bottom: -10000px;
 }
 
 #menu_title{
@@ -35,11 +37,11 @@
 }
 
 #content_box{
-    background: #fff;
     float: left;
-    width: 100%;
-    padding-bottom: 10000px;
-    margin-bottom: -10000px;
+    width: 768px;
+    background: #fff;
+    min-height: 600px;
+
     overflow: hidden;
 }
 
@@ -81,7 +83,6 @@
     width: 96%;
     margin: 0 auto;
     min-height: 600px;
-    height: 600px;
     font-size: 14px;
     color: #333;
     line-height: 180%;
@@ -108,6 +109,15 @@
 .selected{
     background:#fff url(/static/images/menuselect.jpg) 210px 11px no-repeat;
     color:#082e7f;
+}
+
+#content_title{
+    font-size: 20px;
+    font-family: "黑体";
+    color: #000;
+    font-weight: normal;
+    line-height: 50px;
+    text-align: center;
 }
 
 #content_body{
