@@ -1,0 +1,86 @@
+{% import 'tools/admin-tools.twig' as tool %}
+{% extends 'admin/base.html' %}
+
+{% block headhtml %}
+<link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<style>
+#article-list{
+    width: 100%;
+    margin: 0 auto;
+}
+#article-list li{
+    line-height: 30px;
+}
+#article-list #btns{
+    text-align: right;
+    width: 100%;
+}
+#article-list label{
+    width: 150px;
+    display: inline-block;
+    text-align: right;
+}
+#article-list span{
+    display: inline-block;
+    text-align: left;
+}
+
+.content-text{
+    text-align: left;
+    text-indent: 2em;
+    width: 100%;
+}
+</style>
+<script type="text/javascript">
+$('#article_edit_form').ajaxForm({
+    dataType:'json',
+    success: function(response){
+        if (response.success) {
+            $S.redirect("/admin/article", 0);
+        }else{
+            $S.alert(response.message.join('，'),2000);
+        }
+    },
+    error: function() {
+        $S.error('发生技术问题，导致你的操作失败。请联系管理员！');
+    }
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h2>信息管理  &amp; Manage News</h2>
+<div id="article-list">
+<form action="/admin/article/{{queryArticle.id}}/edit" method="put" id="article_edit_form">
+    <ul>
+    {% if action == 'view' %}
+        <li><label>标题：</label> <span>{{ queryArticle.title }}</span></li>
+        <li><label>作者：</label> <span>{{ queryArticle.author.name }}</span></li>
+        <li><label>发表时间：</label> <span>{{ queryArticle.created|date('Y-m-d H:i:s') }}</span></li>
+        <li><label>内容：</label><br />
+            <div class="content-text">{{ queryArticle.content }}</div>
+        </li>
+    {% elseif action == 'edit' %}
+        <li><label>标题：</label> <input tpye="text" value="{{ queryArticle.title }}" name="title" /></li>
+        <li><label>作者：</label> {{ queryArticle.author.name }}</li>
+        <li><label>类型：</label>
+        <select name="category">
+            <option value="1" {% if queryArticle.category == 1 %}selected="selected"{% endif %}>新闻简报</option>
+            <option value="5" {% if queryArticle.category == 5 %}selected="selected"{% endif %}>通知公告</option>
+            <option value="9" {% if queryArticle.category == 9 %}selected="selected"{% endif %}>学术活动</option>    
+        </select>
+        <li><label>内容：</label><br />
+        <textarea cols="100" rows="10" name="content">{{ queryArticle.content }}</textarea></li>
+    {% endif %}
+    </ul>
+    <div id="btns">
+        {% if action == 'view' %}
+        <a href="/admin/article/{{queryArticle.id}}/edit">编辑</a>
+        {% elseif action == 'edit' %}
+        <input type="submit" value="修改" />
+        <input type="button" value="取消" onclick="location.href='/admin/article/{{queryArticle.id}}';"/>
+        {% endif %}
+    </div>
+</form>
+</div>
+{% endblock %}

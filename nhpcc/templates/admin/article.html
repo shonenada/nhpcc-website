@@ -1,4 +1,4 @@
-{% import 'tools/admin-tools.twig' as tool %}
+{% import 'tools/admin-tools.twig' as tools %}
 {% extends 'admin/base.html' %}
 
 {% block headhtml %}
@@ -8,12 +8,12 @@ $(function(){
     $(".btn-remove").click(function(){
         id = $(this).attr("id").replace("oid-", '');
         $.ajax({
-            url: '/admin/news/' + id,
+            url: '/admin/article/' + id,
             type: 'DELETE',
             dataType: 'json',
             success: function(response){
                 if (response.success) {
-                    $S.redirect("/admin/news");                    
+                    $S.redirect("/admin/article");                    
                 }else{
                     $S.alert(response.message.join('，'),2000);
                 }
@@ -28,22 +28,24 @@ $(function(){
 {% endblock %}
 
 {% block content %}
-<span style="float: left;"><a href="/admin/news/create">发布信息</a></span> <h2>信息管理  &amp; Manage Info</h2>
+<span style="float: left;"><a href="/admin/article/create">发布文章</a></span> <h2>文章管理  &amp; Manage Article</h2>
 <ul>
     <li>
         <div style="width:25%">标题</div>
-        <div style="width:25%">作者</div>
-        <div style="width:25%">时间</div>
+        <div style="width:15%">作者</div>
+        <div style="width:10%">分类</div>
+        <div style="width:20%">时间</div>
         <div style="width:20%">操作</div>
     </li>
-    {% for u in news %}
+    {% for u in article %}
         <li>
-        <a href="/admin/news/{{u.id}}">
+        <a href="/article/{{u.id}}">
             <div style="width:25%">{{ u.title }}</div>
-            <div style="width:25%">{{ u.author.name }}</div>
-            <div style="width:25%">{{ u.created|date("Y-m-d H:i:s") }}</div>
+            <div style="width:15%">{{ u.author.name }}</div>
+            <div style="width:10%">{{ tools.getArticleType(u.category) }}</div>
+            <div style="width:20%">{{ u.created|date("Y-m-d H:i:s") }}</div>
         </a>
-        <div style="width:20%"><button onclick="location.href='/admin/news/{{u.id}}/edit'" >修改</button> | <button class="btn-remove" id="oid-{{u.id}}">删除</button></div>
+        <div style="width:20%"><button onclick="location.href='/admin/article/{{u.id}}/edit'" >修改</button> | <button class="btn-remove" id="oid-{{u.id}}">删除</button></div>
         </li>
     {% endfor %}
 </ul>

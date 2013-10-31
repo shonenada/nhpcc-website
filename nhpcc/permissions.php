@@ -38,13 +38,13 @@ return array(
         array($administrator, "/admin/account/\d+?/edit", "GET"),
         array($administrator, "/admin/account/\d+?/edit", "PUT"),
 
-        array($administrator, "/admin/news", "GET"),
-        array($administrator, "/admin/news", "POST"),
-        array($administrator, "/admin/news/create", "GET"),
-        array($administrator, "/admin/news/\d+?", "GET"),
-        array($administrator, "/admin/news/\d+?", "DELETE"),
-        array($administrator, "/admin/news/\d+?/edit", "GET"),
-        array($administrator, "/admin/news/\d+?/edit", "PUT"),
+        array($administrator, "/admin/article", "GET"),
+        array($administrator, "/admin/article", "POST"),
+        array($administrator, "/admin/article/create", "GET"),
+        array($administrator, "/admin/article/\d+?", "GET"),
+        array($administrator, "/admin/article/\d+?", "DELETE"),
+        array($administrator, "/admin/article/\d+?/edit", "GET"),
+        array($administrator, "/admin/article/\d+?/edit", "PUT"),
 
     ),
     "deny" => array(
