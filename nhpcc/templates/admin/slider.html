@@ -1,0 +1,50 @@
+{% import 'tools/admin-tools.twig' as tool %}
+{% extends 'admin/base.html' %}
+
+{% block headhtml %}
+<link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<script>
+$(function(){
+    $(".btn-remove").click(function(){
+        id = $(this).attr("id").replace("oid-", '');
+        $.ajax({
+            url: '/admin/slider/' + id,
+            type: 'DELETE',
+            dataType: 'json',
+            success: function(response){
+                if (response.success) {
+                    $S.redirect("/admin/slider");
+                }else{
+                    $S.alert(response.message.join('，'),2000);
+                }
+            },
+            error: function() {
+                $S.error('发生技术问题，导致你的操作失败。请联系管理员！');
+            }
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<span style="float: left;"><a href="/admin/slider/create">添加</a></span> <h2>幻灯片管理  &amp; Manage Slider</h2>
+<ul>
+    <li>
+        <div style="width:45%">标题</div>
+        <div style="width:15%">图片</div>
+        <div style="width:25%">链接</div>
+        <div style="width:8%">操作</div>
+    </li>
+    {% for u in sliders %}
+        <li>
+        <div style="width:45%; font-size: 12px">{{ u.title }}</div>
+        <div style="width:15%"><a href="{{ u.pic }}">查看</a></div>
+        <div style="width:25%"><a href="{{ u.url }}">{{ u.url }}</a></div>
+        <div style="width:8%"><button class="btn-remove" id="oid-{{u.id}}">删除</button></div>
+        </li>
+    {% endfor %}
+</ul>
+<div id="pageline">
+</div>
+{% endblock %}

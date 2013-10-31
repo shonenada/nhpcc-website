@@ -17,10 +17,18 @@ return array(
         array($everyone, "/login", "POST"),
         array($normal, "/logout", "POST"),
 
-        array($everyone, "/overview(/){0,1}(\S)*?", "GET"),
+        array($everyone, "/overview", "GET"),
+        array($everyone, "/overview/introduction", "GET"),
+        array($everyone, "/overview/team", "GET"),
+        array($everyone, "/overview/team/\d+", "GET"),
 
         array($administrator, "/admin", "GET"),
         array($administrator, "/admin/status", "GET"),
+
+        array($administrator, "/admin/slider", "GET"),
+        array($administrator, "/admin/slider", "POST"),
+        array($administrator, "/admin/slider/create", "GET"),
+        array($administrator, "/admin/slider/\d+", "DELETE"),
 
         array($administrator, "/admin/account", "GET"),
         array($administrator, "/admin/account", "POST"),
