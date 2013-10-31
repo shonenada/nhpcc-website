@@ -21,14 +21,18 @@ class Authentication{
         };
 
         $allow = array_filter($this->ptable, function($i)use($user, $resource, $method, $auth){
-            return $resource == $i['resource']
+            $pattern = sprintf("/^%s$/", str_replace('/', '\/', $i['resource']));
+            preg_match($pattern, $resource, $matches);
+            return $matches != null
                 && ('*' == $i['method'] || $i['method'] == $method)
                 && $auth($i['role'], $user)
                 && $i['action'] == 'allow';
         });
         
         $deny = array_filter($this->ptable, function($i)use($user, $resource, $method, $auth){
-            return $resource == $i['resource']
+            $pattern = sprintf("/^%s$/", str_replace('/', '\/', $i['resource']));
+            preg_match($pattern, $resource, $matches);
+            return $matches != null
                 && ('*' == $i['method'] || $i['method'] == $method)
                 && $auth($i['role'], $user)
                 && $i['action'] == 'deny';
