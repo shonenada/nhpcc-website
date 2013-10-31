@@ -15,7 +15,7 @@ function setup_hooks($app){
             $user = NULL;
         }
         $app->environment['user'] = $user;
-        viewAddGlobal($app, 'user', $user);
+        viewAddGlobal($app, 'currentUser', $user);
     });
 
     $app->hook("slim.before.dispatch", function() use ($app){
