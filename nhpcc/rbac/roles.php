@@ -21,9 +21,9 @@ class EveryOne implements Role {
 
 }
 
-class Student extends EveryOne {
+class NormalUser extends EveryOne {
 
-    protected $roleName = "Student";
+    protected $roleName = "NormalUser";
     protected $parentName = "EveryOne";
 
     public function getRoleName() {
@@ -40,10 +40,29 @@ class Student extends EveryOne {
 
 }
 
-class Teacher extends EveryOne {
+class Student extends NormalUser {
+
+    protected $roleName = "Student";
+    protected $parentName = "User";
+
+    public function getRoleName() {
+        return $this->roleName;
+    }
+
+    public function getParentName() {
+        return $this->parentName;
+    }
+
+    public function authenticate(User $user=null) {
+        return $user != null && $user->getLevel() >= 3;
+    }
+
+}
+
+class Teacher extends NormalUser {
 
     protected $roleName = "Teacher";
-    protected $parentName = "EveryOne";
+    protected $parentName = "NormalUser";
 
     public function getRoleName() {
         return $this->roleName;
@@ -67,7 +86,7 @@ class SuperUser extends Teacher {
         return $this->roleName;
     }
 
-    public function getParentName(){
+    public function getParentName() {
         return $this->parentName;
     }
 
@@ -76,10 +95,10 @@ class SuperUser extends Teacher {
     }
 }
 
-class Administrator extends EveryOne {
+class Administrator extends NormalUser {
 
     protected $roleName = "Administrator";
-    protected $parentName = "EveryOne";
+    protected $parentName = "NormalUser";
 
     public function getParentName() {
         return $this->parentName;
