@@ -1,16 +1,19 @@
 <?php
-require_once(APPROOT . "models/user.php");
-require_once(APPROOT . "models/news.php");
+require_once(APPROOT . "models/User.php");
+require_once(APPROOT . "models/News.php");
+require_once(APPROOT . "models/Slider.php");
 
 return array(
     "export" => function($app) {
         $app->get("/", function() use($app) {
             // 首页
             $news = News::getList(1, 7);
-            foreach($news as &$n){
-                $author_id = $n->getAuthor();
-                $n['a'] = User::find($author_id);
-            }
+            $static_content = require(APPROOT. 'static_contents/contents.php');
+            $links = require(APPROOT. 'static_contents/links.php');
+            $academician_intro = $static_content['index_intro'];
+            $main_links = $links['main'];
+            $sub_links = $links['sub'];
+            $sliders = Slider::getList(1, 3);
             $app->render("index.html", get_defined_vars());
         });
 
