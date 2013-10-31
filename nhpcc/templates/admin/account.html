@@ -8,12 +8,12 @@ $(function(){
     $(".btn-remove-user").click(function(){
         id = $(this).attr("id").replace("user-", '');
         $.ajax({
-            url: '/admin/account/{{queryUser.id}}',
+            url: '/admin/account/' + id,
             type: 'DELETE',
             dataType: 'json',
             success: function(response){
                 if (response.success) {
-                    $S.notice(response.message.join('，'),2000);
+                    $S.redirect("/admin/account");                    
                 }else{
                     $S.alert(response.message.join('，'),2000);
                 }
@@ -28,7 +28,7 @@ $(function(){
 {% endblock %}
 
 {% block content %}
-<h2>用户管理  &amp; Manage Account</h2>
+<span style="float: left;"><a href="/admin/account/create">添加用户</a></span> <h2>用户管理  &amp; Manage Account</h2>
 <ul>
     <li>
         <div style="width:25%">用户名</div>
@@ -43,7 +43,7 @@ $(function(){
             <div style="width:25%">{{ u.name }}</div>
             <div style="width:25%">{{ tool.getRole(u.level) }}</div>
         </a>
-        <div style="width:20%"><button class="btn-remove-user" id="user-{{u.id}}" href="javascript:void(0);">删除</button></div>
+        <div style="width:20%"><button onclick="location.href='/admin/account/{{u.id}}/edit'" >修改</button> | <button class="btn-remove-user" id="user-{{u.id}}">删除</button></div>
         </li>
     {% endfor %}
 </ul>

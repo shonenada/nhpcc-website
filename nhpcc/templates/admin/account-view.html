@@ -31,8 +31,7 @@ $('#user_edit_form').ajaxForm({
     dataType:'json',
     success: function(response){
         if (response.success) {
-            $S.notice(response.message.join('，'),2000);
-            $S.redirect("/", 3000);
+            $S.redirect("/admin/account", 0);
         }else{
             $S.alert(response.message.join('，'),2000);
         }
@@ -56,8 +55,8 @@ $('#user_edit_form').ajaxForm({
         <li><label>最后登录时间：</label> <span>{{ queryUser.lastLogin|date('Y-m-d H:i:s') }}</span></li>
         <li><label>最后登录IP：</label> <span>{{ queryUser.ip }}</span></li>
     {% elseif action == 'edit' %}
-        <li><label>用户名：</label> <input type="text" value="{{ queryUser.username }}" name="username" /></li>
-        <li><label>姓名：</label> <input type="text" value="{{ queryUser.name }}" name="name" /></li>
+        <li><label>用户名：</label> {{ queryUser.username }}</li>
+        <li><label>姓名：</label> {{ queryUser.name }}</li>
         <li><label>身份：</label>
             <select name="level">
                 <option value="1">普通用户</option>
