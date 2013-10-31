@@ -4,7 +4,7 @@ return array(
     "home" => array("title" => "首页", "url" => "/", "id" => "home"),
     "overview" => array("title" => "实验室概况", "url" => "/overview", "sub" => array(
             "introduction" => array("title" => "实验室简介", "url" => "/overview/introduction"),
-            "academic" => array("title" => "学术委员会", "url" => "/overview/academic"),
+            // "academic" => array("title" => "学术委员会", "url" => "/overview/academic"),
             "team" => array("title" => "研究队伍", "url" => "/overview/team")
         )),
     "research" => array("title" => "研究方向", "url" => "/research"),

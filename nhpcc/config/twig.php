@@ -2,9 +2,7 @@
 
 // Define global variables for view
 
-$categories = require(APPROOT. "config/static/categories.php");
-$static_contents = require(APPROOT. "config/static/contents.php");
-$links = require(APPROOT. "config/static/links.php");
+$categories = require(APPROOT. "static_contents/categories.php");
 
 return array('global' =>
     array(
@@ -13,6 +11,4 @@ return array('global' =>
         'webDescription' => '国家高性能计算中心深圳分中心',
         'logoTitle' => '国家高性能计算中心深圳分中心',
         'categories' => $categories,
-        'static_contents' => $static_contents,
-        'links' => $links,
     ));
