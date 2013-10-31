@@ -131,7 +131,7 @@ class User extends ModelBase{
 
     static public function getList($page=1, $pagesize=20, $asc=false) {
         $dql = sprintf(
-            'SELECT partial n.{id, username, name, level} FROM %s n WHERE n.level > 0 '.
+            'SELECT n FROM %s n WHERE n.level > 0'.
             'ORDER BY n.id %s', 
             get_called_class(),
             $asc ? 'ASC' : 'DESC'

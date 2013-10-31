@@ -32,6 +32,17 @@ class ModelBase {
     static public function em() {
         return ORMManager::getEntityManager();
     }
+
+    static public function getList($page=1, $pagesize=20, $asc=false) {
+        $dql = sprintf(
+            'SELECT n FROM %s n '.
+            'ORDER BY n.id %s', 
+            get_called_class(),
+            $asc ? 'ASC' : 'DESC'
+        );
+        $query = static::em()->createQuery($dql)->setMaxResults($pagesize)->setFirstResult($pagesize*($page-1));
+        return $query->useQueryCache(false)->getResult();
+    }
 }
 
 
