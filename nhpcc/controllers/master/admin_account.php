@@ -1,23 +1,9 @@
 <?php
 require_once(APPROOT . "models/user.php");
+require_once(APPROOT . "models/news.php");
 
 return array(
     "export" => function($app) {
-        
-        $app->get("/", function() use($app) {
-            // 首页
-            $app->render("index.html");
-        });
-
-        $app->get("/admin", function() use($app){
-            // 后台首页，跳转到运行状态页面
-            $app->redirect("/admin/status");
-        });
-
-        $app->get("/admin/status$", function() use($app) {
-            // 后台，运行状态
-            $app->render("admin/status.html");
-        });
 
         $app->get("/admin/account", function() use($app) {
             // 后台，用户管理，用户列表
@@ -91,7 +77,6 @@ return array(
             $app->render("admin/account-view.html", get_defined_vars());
         })->conditions(array('id' => '\d+'));
 
-
         $app->put("/admin/account/:id/edit", function($id) use($app) {
             // 后台，用户管理，修改用户
             $queryUser = User::find($id);
@@ -109,6 +94,5 @@ return array(
             }
             echo json_encode(array("success" => $success, "message" => $message));
         })->conditions(array('id' => '\d+'));
-
     }
 );
