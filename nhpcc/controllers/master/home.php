@@ -8,6 +8,8 @@ return array(
         $app->get("/", function() use($app) {
             // 首页
             $news = Article::getSpecList(Article::NEWS, 1, 7);
+            $notice = Article::getSpecList(Article::ANNOUNCE, 1, 10);
+            $activity = Article::getSpecList(Article::ACTIVATE, 1, 10);
             $static_content = require(APPROOT. 'static_contents/contents.php');
             $links = require(APPROOT. 'static_contents/links.php');
             $academician_intro = $static_content['index_intro'];

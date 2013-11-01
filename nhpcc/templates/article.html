@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block htmlhead %}
+<link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/sub.css') }}" />
+<link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/article.css') }}" />
+{% endblock %}
+{% block main %}
+<div id="sub_main">
+    <div class="list_main">
+        <div class='list_right_title'>{{ article.title }}</div>
+        <div class='list_right_info'>作者：{{ article.author.name }}　发布日期：{{article.created|date("Y-m-d H:i:s")}}　浏览次数：{{article.readCount}}</div>
+        <div class='list_right_main'>
+            <p>{{ article.content|raw }}</p>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</div>
+{% endblock %}

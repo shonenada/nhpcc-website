@@ -22,6 +22,8 @@ return array(
         array($everyone, "/overview/team", "GET"),
         array($everyone, "/overview/team/\d+", "GET"),
 
+        array($everyone, "/article/\d+", "GET"),
+
         array($administrator, "/admin", "GET"),
         array($administrator, "/admin/status", "GET"),
 
