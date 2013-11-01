@@ -97,6 +97,10 @@ class Article extends ModelBase {
         return $this->readCount;
     }
 
+    public function setReadCount($rc) {
+        $this->readCount = $rc;
+    }
+
     public function getDelete() {
          return $this->deleted;
     }

@@ -2,7 +2,6 @@
 {% block htmlhead %}
 <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/index.css') }}" />
 <script src="/static/scripts/plugins/myfocus.js"></script>
-<script src="/static/scripts/plugins/MSClass.js"></script>
 <script src="/static/scripts/plugins/05e0com.js"></script>
 {% endblock %}
 {% block main %}
@@ -33,16 +32,13 @@
         <div id="notice_box" class="box">
             <h3>通知公告</h3>
             <div id="notice">
-                <ul class="notice_list" id="ulid">
+                <ul class="activity_list">
                 {% for n in notice %}
                     <li>
-                        <span>{{n.create}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
+                        <span>{{n.create|date('m-d')}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
                     </li>
                 {% endfor %}
                 </ul>
-                <script language=javascript>
-                    new Marquee(["notice", "ulid"],0,1,290,320,80,0,0);
-                </script>
             </div>
         </div>
 
@@ -51,7 +47,7 @@
             <div class="activity">
                 <ul class="activity_list">
                 {% for a in activity %}
-                    <li><span>{{a.create}}</span><a href='/article/{{a.id}}' title='{{a.title}}' >{{a.title}}</a></li>
+                    <li><span>{{a.create|date('m-d')}}</span><a href='/article/{{a.id}}' title='{{a.title}}' >{{a.title}}</a></li>
                 {% endfor %}
                 </ul>
             </div>
