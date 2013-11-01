@@ -1,0 +1,44 @@
+.list_main{
+    overflow: hidden;
+    width: 998px;
+    background-color: #fff;
+    border: solid 1px #ccc;
+}
+
+.list_right_title{
+    font-size: 20px;
+    font-family: "黑体";
+    color: #000;
+    font-weight: normal;
+    line-height: 50px;
+    text-align: center;
+}
+
+.list_right_info{
+    width: 96%;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: #999;
+    border-top: 1px solid #eeeeee;
+    margin: 2px 0;
+}
+
+.list_right_info a{
+    text-decoration: underline;
+}
+
+.list_right_info a:hover{
+    color: #ff6600;
+    text-decoration: underline;
+}
+
+.list_right_main{
+    width: 96%;
+    margin: 0 auto;
+    min-height: 600px;
+    font-size: 14px;
+    color: #333;
+    line-height: 180%;
+    text-align: left;
+}

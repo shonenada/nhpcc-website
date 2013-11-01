@@ -97,11 +97,6 @@
     background: url(/static/images/noticebg.jpg) repeat-x 0 0;
 }
 
-#notice{
-    width: 290px;
-    margin: 0 auto;
-}
-
 #notice .notice_list{
     width: 240px;
     float: right;

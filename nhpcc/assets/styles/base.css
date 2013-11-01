@@ -93,6 +93,10 @@
 	background: #445c6a url(/static/images/menubg.jpg) center top repeat-x;
 }
 
+ul.top-link li a{
+	text-decoration: none !important;
+}
+
 ul.top-link li{
 	display: inline;
 }
