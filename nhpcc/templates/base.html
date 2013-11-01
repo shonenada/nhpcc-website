@@ -27,9 +27,9 @@
         <div id="header_title">广东省重点实验室 国家高性能计算深圳中心</div>
         <div id="header_link">
             <ul class="top-link">
-                <li class="first">{% if currentUser %}{{currentUser.username}}，您好 <a id="logout-btn" class="logout-btn" href="#logout">退出</a>{% else %}<a href="/login">登录</a>{% endif %}</li>
-                <li><a href="/nhpcc">内部网</a></li>
-                <li><a href="/contact">联系我们</a></li>
+                <li class="first">{% if currentUser %}{{currentUser.username}}，您好</li>
+                {% if currentUser.level >=9 %}<li><a href="/admin">后台管理</a></li>{%endif%}
+                <li><a id="logout-btn" class="logout-btn" href="#logout">退出</a>{% else %}<a href="/login">登录</a>{% endif %}</li>
             </ul>
         </div>
         <div id="header_search">
@@ -72,7 +72,11 @@
 {% block footer %}
 <div id="footer">
     地址：深圳市南山区南海大道3688号深圳大学科技楼1304<br />
-    电话：+86 (755) 2653 4207<br />
+    <ul class="top-link">
+        <li class="first"><a href="/login">登录</a></li>
+        <li><a href="/nhpcc">内部网</a></li>
+        <li><a href="/contact">联系我们</a></li>
+    </ul>
     <span class="copyright">Copyright &copy; 2013 国家高性能计算深圳分中心  All rights reserved.</span>
 </div>
 {% endblock %}
