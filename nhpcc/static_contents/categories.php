@@ -31,7 +31,7 @@ return array(
     "train" => array("title" => "人才培养", "url" => "/train", "sub" => array(
             "teachers" => array("title" => "导师名单", "url" => "/train/teachers"),
             "graduate" => array("title" => "研究生名单", "url" => "/train/graduate"),
-            "loongson" => array("title" => "导师名单", "url" => "/train/loongson"),
+            "loongson" => array("title" => "龙芯奖学金", "url" => "/train/loongson"),
         )),
     "rules" => array("title" => "规章制度", "url" => "/rules"),
     "finding" => array("title" => "广纳贤才", "url" => "/finding"),
