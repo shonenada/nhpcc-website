@@ -24,6 +24,38 @@ return array(
 
         array($everyone, "/article/\d+", "GET"),
 
+        array($everyone, "/research", "GET"),
+
+        array($everyone, "/projects", "GET"),
+        array($everyone, "/projects/l", "GET"),
+        array($everyone, "/projects/t", "GET"),
+
+        array($everyone, "/achievements", "GET"),
+        array($everyone, "/achievements/theies", "GET"),
+        array($everyone, "/achievements/monographs", "GET"),
+        array($everyone, "/achievements/awards", "GET"),
+        array($everyone, "/achievements/patents", "GET"),
+
+        array($everyone, "/exchange", "GET"),
+        array($everyone, "/exchange/activities", "GET"),
+        array($everyone, "/exchange/reports", "GET"),
+
+        array($everyone, "/foundation", "GET"),
+        array($everyone, "/foundation/manage", "GET"),
+        array($everyone, "/foundation/guide", "GET"),
+        array($everyone, "/foundation/list", "GET"),
+        array($everyone, "/foundation/contract", "GET"),
+
+        array($everyone, "/train", "GET"),
+        array($everyone, "/train/teachers", "GET"),
+        array($everyone, "/train/graduate", "GET"),
+        array($everyone, "/train/loongson", "GET"),
+
+        array($everyone, "/rules", "GET"),
+        array($everyone, "/finding", "GET"),
+        array($everyone, "/download", "GET"),
+
+
         array($administrator, "/admin", "GET"),
         array($administrator, "/admin/status", "GET"),
 
