@@ -50,9 +50,11 @@ $('#article_create_form').ajaxForm({
         <li><label>标题：</label> <input type="text" value="" name="title" /></li>
         <li><label>类型：</label>
         <select name="category">
-            <option value="1">新闻简报</option>
-            <option value="5">通知公告</option>
-            <option value="9">学术活动</option>    
+            {% for key, cat in categories %}
+            {% for c in cat[1] %}
+            <option value="{{ c[0] }}">{{ cat[0] }} / {{ c[1] }}</option>
+            {% endfor %}
+            {% endfor %}
         </select>
         <li><label>内容：</label> <br />
         <textarea cols="100" rows="10" name="content"></textarea></li>
