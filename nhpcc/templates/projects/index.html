@@ -56,7 +56,9 @@ $(function(){
         <div id="content">
             <div id="content_title"> </div>
             <div id="content_body">
-
+            {% for project in projects %}
+                {{ project.title }}
+            {% endfor %}
             </div>
         </div>
     </div>
