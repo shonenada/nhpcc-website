@@ -35,7 +35,8 @@ return array(
         });
 
         $app->get("/admin/article/create", function() use($app) {
-            $app->render("admin/article-create.html");
+            $categories = Article::$categories;
+            $app->render("admin/article-create.html", get_defined_vars());
         });
 
         $app->get("/admin/article/:id", function($id) use($app) {
