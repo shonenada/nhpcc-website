@@ -37,7 +37,7 @@ class Article extends ModelBase {
             'REPORT' => array(32, '学术报告'),
             )),
         'FOUNDATION' => array('开放基金', array(
-            'MANAEG' => array(41, '开放课题管理办法'),
+            'MANAGE' => array(41, '开放课题管理办法'),
             'GUIDE' => array(42, '开放课题申请指南'),
             'LIST' => array(43, '开放课题目录'),
             'CONTRACT' => array(44, '开放课题合同书'),

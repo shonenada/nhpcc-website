@@ -26,20 +26,19 @@
     font-size: 9px;
 }
 
-#slider_box{
-    padding: 10px 0px 0 0px;
-}
-
 #slider{
     float: left;
     padding: 1px;
     border: solid 1px #ccc;
     background-color: #fff;
-    margin-top: 5px;
+    width: 350px;
 }
-
+#slider .pic img{
+    width: 350px;
+    height: 233px;    
+}
 #slider_box .slider_list{
-    width: 405px;
+    width: 360px;
     float: right;
 }
 
@@ -51,10 +50,12 @@
     text-align: left;
     text-indent: 8px;
     background: url(/static/images/icon3.gif) no-repeat 0 16px;
-    border-bottom: 1px dashed #aaa
+    border-bottom: 1px dashed #aaa;
+    margin: 0 5px 0 0;
 }
 
 #slider_box .slider_list li span{
+    margin: 0 10px 0 0;
     float: right;
     color: #9DA19F;
     font: 12px/38px Arial,sans-serif;

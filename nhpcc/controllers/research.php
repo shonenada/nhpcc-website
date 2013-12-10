@@ -1,5 +1,7 @@
 <?php
 
+require_once(APPROOT . "models/Article.php");
+
 return array(
     "export" => function($app) {
 
@@ -7,8 +9,7 @@ return array(
 
         $app->get("/research", function() use($app, $cat) {
             $nav = $cat['research'];
-            $app->render("research/index.html", get_defined_vars());
+            $app->render("research/list.html", get_defined_vars());
         });
-
     }
 );

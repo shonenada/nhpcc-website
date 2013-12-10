@@ -27,6 +27,7 @@ return array(
         array($everyone, "/research", "GET"),
 
         array($everyone, "/projects", "GET"),
+        array($everyone, "/projects/\d+", "GET"),
         array($everyone, "/projects/l", "GET"),
         array($everyone, "/projects/t", "GET"),
 
@@ -35,25 +36,32 @@ return array(
         array($everyone, "/achievements/monographs", "GET"),
         array($everyone, "/achievements/awards", "GET"),
         array($everyone, "/achievements/patents", "GET"),
+        array($everyone, "/achievements/\d+", "GET"),
 
         array($everyone, "/exchange", "GET"),
         array($everyone, "/exchange/activities", "GET"),
         array($everyone, "/exchange/reports", "GET"),
+        array($everyone, "/exchange/\d+", "GET"),
 
         array($everyone, "/foundation", "GET"),
         array($everyone, "/foundation/manage", "GET"),
         array($everyone, "/foundation/guide", "GET"),
         array($everyone, "/foundation/list", "GET"),
         array($everyone, "/foundation/contract", "GET"),
+        array($everyone, "/foundation/\d+", "GET"),
 
         array($everyone, "/train", "GET"),
         array($everyone, "/train/teachers", "GET"),
         array($everyone, "/train/graduate", "GET"),
         array($everyone, "/train/loongson", "GET"),
+        array($everyone, "/train/\d+", "GET"),
 
         array($everyone, "/rules", "GET"),
+        array($everyone, "/rules/\d+", "GET"),
         array($everyone, "/finding", "GET"),
+        array($everyone, "/finding/\d+", "GET"),
         array($everyone, "/download", "GET"),
+        array($everyone, "/download/\d+", "GET"),
 
 
         array($administrator, "/admin", "GET"),

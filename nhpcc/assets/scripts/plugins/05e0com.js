@@ -20,8 +20,8 @@ myFocus.set({
 	pattern:'mF_classicHC',
 	time:4,//切换时间间隔(秒)
 	trigger:'click',
-	width:300,
-	height:200,
+	width:350,
+	height:233,
 	txtHeight:'26px'//文字层高度设置(像素),'default'为默认高度，0为隐藏
 });
 
