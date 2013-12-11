@@ -174,7 +174,7 @@ class Article extends ModelBase {
     static public function getList($page=1, $pagesize=20, $asc=false) {
         $dql = sprintf(
             'SELECT n FROM %s n WHERE n.deleted = 0 '.
-            'ORDER BY n.id %s',
+            'ORDER BY n.created %s',
             get_called_class(),
             $asc ? 'ASC' : 'DESC'
         );
@@ -185,7 +185,7 @@ class Article extends ModelBase {
     static public function getSpecList($cat, $page=1, $pagesize=20, $asc=false) {
         $dql = sprintf(
             'SELECT n FROM %s n WHERE n.deleted = 0 and n.category = %d'.
-            'ORDER BY n.id %s',
+            'ORDER BY n.created %s',
             get_called_class(),
             $cat,
             $asc ? 'ASC' : 'DESC'
