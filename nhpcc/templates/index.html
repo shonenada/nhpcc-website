@@ -22,7 +22,7 @@
             <ul class="slider_list">
             {% for n in news %}
                 <li>
-                    <span>{{n.create|date('m-d')}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
+                    <span>{{n.created|date('m-d')}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
                 </li>
             {% endfor %}
             </ul>
@@ -35,7 +35,7 @@
                 <ul class="activity_list">
                 {% for n in notice %}
                     <li>
-                        <span>{{n.create|date('m-d')}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
+                        <span>{{n.created|date('m-d')}}</span><a href='/article/{{n.id}}' title='{{n.title}}'>{{n.title}}</a>
                     </li>
                 {% endfor %}
                 </ul>
@@ -47,7 +47,7 @@
             <div class="activity">
                 <ul class="activity_list">
                 {% for a in activity %}
-                    <li><span>{{a.create|date('m-d')}}</span><a href='/article/{{a.id}}' title='{{a.title}}' >{{a.title}}</a></li>
+                    <li><span>{{a.created|date('m-d')}}</span><a href='/article/{{a.id}}' title='{{a.title}}' >{{a.title}}</a></li>
                 {% endfor %}
                 </ul>
             </div>
