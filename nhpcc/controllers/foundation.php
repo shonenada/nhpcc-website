@@ -10,11 +10,11 @@ return array(
         $app->get("/foundation", function() use($app, $cat) {
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
-            $manage = Article::getSpecList(Article::getCat("FOUNDATION_MANAGE"), 1 ,10);
-            $guide = Article::getSpecList(Article::getCat("FOUNDATION_GUIDE"), 1 ,10);
-            $list = Article::getSpecList(Article::getCat("FOUNDATION_LIST"), 1 ,10);
-            $contract = Article::getSpecList(Article::getCat("FOUNDATION_CONTRACT"), 1 ,10);
-            $arts = array_unique(array_merge($manage, $guide, $list, $contract));
+            $manage = Article::getSpecList(Article::getCat("FOUNDATION_MANAGE"), 1, 10);
+            $guide = Article::getSpecList(Article::getCat("FOUNDATION_GUIDE"), 1, 10);
+            $list = Article::getSpecList(Article::getCat("FOUNDATION_LIST"), 1, 10);
+            $contract = Article::getSpecList(Article::getCat("FOUNDATION_CONTRACT"), 1, 10);
+            $arts = array_merge($manage, $guide, $list, $contract);
             $app->render("sub-index.html", get_defined_vars());
         });
 
@@ -22,7 +22,7 @@ return array(
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $sub = $categories['manage'];
-            $arts = Article::getSpecList(Article::getCat("FOUNDATION_MANAGE"), 1 ,10);
+            $arts = Article::getSpecList(Article::getCat("FOUNDATION_MANAGE"), 1, 50);
             $app->render("sub-index.html", get_defined_vars());
         });
 
@@ -30,7 +30,7 @@ return array(
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $sub = $categories['guide'];
-            $arts = Article::getSpecList(Article::getCat("FOUNDATION_GUIDE"), 1 ,10);
+            $arts = Article::getSpecList(Article::getCat("FOUNDATION_GUIDE"), 1, 50);
             $app->render("sub-index.html", get_defined_vars());
         });
 
@@ -38,7 +38,7 @@ return array(
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $sub = $categories['list'];
-            $arts = Article::getSpecList(Article::getCat("FOUNDATION_LIST"), 1 ,10);
+            $arts = Article::getSpecList(Article::getCat("FOUNDATION_LIST"), 1, 50);
             $app->render("sub-index.html", get_defined_vars());
         });
 
@@ -46,7 +46,7 @@ return array(
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $sub = $categories['contract'];
-            $arts = Article::getSpecList(Article::getCat("FOUNDATION_CONTRACT"), 1 ,10);
+            $arts = Article::getSpecList(Article::getCat("FOUNDATION_CONTRACT"), 1, 50);
             $app->render("sub-index.html", get_defined_vars());
         });
 
@@ -54,6 +54,11 @@ return array(
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $article = Article::find($id);
+            $rc = $article->getReadCount();
+            $article->setReadCount($rc+1);
+            $article->save();
+            $article->flush();
+            $article->setAuthor(User::find($article->getAuthor()));
             $app->render("sub.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 

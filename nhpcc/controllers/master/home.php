@@ -19,6 +19,38 @@ return array(
             $app->render("index.html", get_defined_vars());
         });
 
+        $app->get("/news", function() use($app) {
+            $nav = array('url' => '/news', 'title' => '信息简报');
+            $arts = Article::getSpecList(Article::getCat("INDEX_NEWS"), 1, 50);
+            $app->render("sub-index.html", get_defined_vars());
+        });
+
+        $app->get("/annoucnt", function() use($app) {
+            $nav = array('url' => '/annoucnt', 'title' => '通知公告');
+            $arts = Article::getSpecList(Article::getCat("INDEX_ANNOUNCE"), 1, 50);
+            $app->render("sub-index.html", get_defined_vars());
+        });
+
+        $app->get("/news/:id", function($id) use($app) {
+            $article = Article::find($id);
+            $rc = $article->getReadCount();
+            $article->setReadCount($rc+1);
+            $article->save();
+            $article->flush();
+            $article->setAuthor(User::find($article->getAuthor()));
+            $app->render("article.html", get_defined_vars());
+        })->conditions(array("id" => "\d+"));
+        
+        $app->get("/annoucnt/:id", function($id) use($app) {
+            $article = Article::find($id);
+            $rc = $article->getReadCount();
+            $article->setReadCount($rc+1);
+            $article->save();
+            $article->flush();
+            $article->setAuthor(User::find($article->getAuthor()));
+            $app->render("article.html", get_defined_vars());
+        })->conditions(array("id" => "\d+"));
+
         $app->get("/admin", function() use($app){
             // 后台首页，跳转到运行状态页面
             $app->redirect("/admin/status");

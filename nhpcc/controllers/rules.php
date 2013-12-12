@@ -17,6 +17,11 @@ return array(
             $nav = $cat['rules'];
             $categories = $nav['sub'];
             $article = Article::find($id);
+            $rc = $article->getReadCount();
+            $article->setReadCount($rc+1);
+            $article->save();
+            $article->flush();
+            $article->setAuthor(User::find($article->getAuthor()));
             $app->render("sub.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
