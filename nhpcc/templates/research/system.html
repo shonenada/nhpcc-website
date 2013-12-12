@@ -1,0 +1,83 @@
+{% extends "sub.html" %}
+{% block htmlhead %}
+<link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/sub.css') }}" />
+<script>
+$(function(){
+    path = window.location.pathname;
+    $(".sub_list").each(function(){
+        var href = $(this).find('a').attr("href");
+        if (href == path){
+            $(this).addClass("selected");
+        }
+    })
+});
+</script>
+<style>
+#menu_box{
+    width: 280px;
+}
+#menu_title{
+    background: #4f6773 url(/static/images/menubg2-2.jpg) 0 0 repeat;
+}
+.menu_list{
+    font-size: 12px;
+    font-weight: normal;
+}
+#content_box {
+    width: 718px;
+}
+#content_body h1{
+    font-size: 28px;
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+}
+#content_body ul{
+    list-style: disc;
+    margin-left: 60px;
+}
+</style>
+{% endblock %}
+{% block main %}
+<div id="sub_main">
+    <div id="menu_box">
+        <div class="wrapper">
+            <div id="menu_title">{{nav.title}}</div>
+            <ul class="menu">
+            {% for l in categories %}
+                <li class="sub_list">
+                    <a href="{{l.url}}"><span class="menu_list">{{l.title}}</span></a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="content_box">
+        <ul id="crumbs">
+            <li><a href="/">首页</a></li>
+            <li><a>{{ nav.title }}</a></li>
+            <li><a>普及型高性能计算机体系结构</a></li>
+        </ul>
+        <div id="content">
+            <div id="content_title"> </div>
+            <div id="content_body">
+                <h1>普及型高性能计算机体系结构</h1>
+
+                <p>本方向研究团队有院士1人、教授4人、副教授5人,具有博士学位11人。</p>
+                <p>本方向着重于普及型高性能计算机的硬件和体系结构研究,是其它研究方向的硬件基础,主要研究内容包括：</p>
+                <ul>
+                    <li>符合UHPC(Ubiquitous HPC)思想的国产普及型高性能计算机(PHPC)系统研制</li>
+                    <li>适用于PHPC系统的众核体系结构研究</li>
+                    <li>适用于PHPC系统的计算节点结构与互联技术研究</li>
+                    <li>适用于PHPC系统的混合异构体系结构研究</li>
+                    <li>基于PHPC系统的云计算laaS基础设施研制</li>
+                </ul>
+                <p>本学科方向在陈国良院士带领下,提出了“算法理论-算法设计-算法实现-算法应用”一套完整的并行算法研究体系,开发研制的KD系列、SD系列个人高性能计算机达到万亿次/秒计算能力,通过高性能计算在云计算、网格计算、物联网等重要领域的应用实践,形成了鲜明了学科方向特色,在高性能计算领域具有明显的学科优势。</p>
+
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+{% endblock %}

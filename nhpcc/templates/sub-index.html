@@ -35,11 +35,13 @@ $(function(){
             <li><a href="{{sub.url}}">{{sub.title}}</a></li>
         </ul>
         <div id="content" class="content-list">
-            <div id="content_title"> </div>
+            <div id="content_title">{% if sub.title %}{{sub.title}}{%else%}{{ nav.title }}{% endif %}</div>
             <div id="content_body">
             <ul>
+            {% set i = 1 %}
             {% for art in arts %}
-                <li><a href="{{nav.url}}/{{art.id}}" >{{ art.title }}</a></li>
+                <li{% if i%2 == 0 %} class="dark-color"{%endif%}><a href="{{nav.url}}/{{art.id}}" >{{ art.title }}</a><span style="float: right">{{ art.created|date('y-m-d') }}</span></li>
+            {% set i = i + 1%}
             {% endfor %}
             </ul>
             </div>

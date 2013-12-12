@@ -1,0 +1,81 @@
+{% extends "sub.html" %}
+{% block htmlhead %}
+<link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/sub.css') }}" />
+<script>
+$(function(){
+    path = window.location.pathname;
+    $(".sub_list").each(function(){
+        var href = $(this).find('a').attr("href");
+        if (href == path){
+            $(this).addClass("selected");
+        }
+    })
+});
+</script>
+<style>
+#menu_box{
+    width: 280px;
+}
+#menu_title{
+    background: #4f6773 url(/static/images/menubg2-2.jpg) 0 0 repeat;
+}
+.menu_list{
+    font-size: 12px;
+    font-weight: normal;
+}
+#content_box {
+    width: 718px;
+}
+#content_body h1{
+    font-size: 28px;
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+}
+#content_body ul{
+    list-style: disc;
+    margin-left: 60px;
+}
+</style>
+{% endblock %}
+{% block main %}
+<div id="sub_main">
+    <div id="menu_box">
+        <div class="wrapper">
+            <div id="menu_title">{{nav.title}}</div>
+            <ul class="menu">
+            {% for l in categories %}
+                <li class="sub_list">
+                    <a href="{{l.url}}"><span class="menu_list">{{l.title}}</span></a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="content_box">
+        <ul id="crumbs">
+            <li><a href="/">首页</a></li>
+            <li><a>{{ nav.title }}</a></li>
+            <li><a>普及型高性能计算机体系结构</a></li>
+        </ul>
+        <div id="content">
+            <div id="content_title"> </div>
+            <div id="content_body">
+                <h1>普及型高性能计算安全防护</h1>
+
+                <p>本方向研究团队有教授4人,副教授5人,具有博士学位者10人。</p>
+                <p>本方向重点研究国产普及型高性能计算机的高度安全性和自主可控性,以保障其在重点敏感领域的适用性,主要研究内容包括：</p>
+                <ul>
+                    <li>基于软硬件一体化的安全体系架构研究</li>
+                    <li>基于国产CPU和密码芯片的可信计算研究</li>
+                    <li>基于同态密码和签名的安全计算研究</li>
+                    <li>基于感知哈希的视频篡改检测与定位</li>
+                </ul>
+                <p>本本方向针对各新兴网络业务中的安全性、可靠性问题,综合运用各种智能信息处理技术开展研究,成果既有源头创新又有实际应用价值。近五年承担国家级、省部级项目20余项,科研经费2000余万元,研究成果为政府、国防军事等重要信息系统的安全可靠运行提供技术保障,完成国际标准、国家标准、国军标、地方标准及行业标准10佘项,获得全军和省级的科技奖励4项。</p>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+{% endblock %}

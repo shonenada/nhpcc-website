@@ -13,22 +13,11 @@ $(function(){
 });
 </script>
 <style>
-.member-avatar{
-    float: left;
-    width: 130px;
+.light-color{
+    background: rgb(229, 238, 243);
 }
-.member-avatar img{
-    width: 100px;
-    height: 143px;
-}
-.member-intro{
-    float: left;
-}
-.member-intro p{
-    text-indent: 0px !important;
-}
-.member-more-btn{
-    float: right;
+.list-table{
+    text-align: center;
 }
 </style>
 {% endblock %}
@@ -50,12 +39,28 @@ $(function(){
     <div id="content_box">
         <ul id="crumbs">
             <li><a href="/">首页</a></li>
-            <li><a href="">{{nav.title}}</a></li>
+            <li><a href="{{nav.url}}">{{nav.title}}</a></li>
+            <li><a>{{sub.title}}</a></li>
         </ul>
-        <div id="content">
-            <div id="content_title"> </div>
+        <div id="content" class="content-list">
+            <div id="content_title">主要成果和奖励</div>
             <div id="content_body">
-                
+                <table class="list-table">
+                    <tr class="list-head">
+                        <td>获奖时间</td>
+                        <td>获奖人</td>
+                        <td>获奖类别名称和等级</td>
+                    </tr>
+                    {% set i = 1 %}
+                    {% for l in awards %}
+                    <tr {% if i % 2 == 0 %}class="light-color"{%endif%}>
+                        <td>{{l.time}}</td>
+                        <td>{{l.people}}</td>
+                        <td>{{l.level}}</td>
+                    </tr>
+                    {% set i = i + 1 %}
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>

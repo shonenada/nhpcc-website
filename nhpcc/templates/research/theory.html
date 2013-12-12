@@ -1,0 +1,82 @@
+{% extends "sub.html" %}
+{% block htmlhead %}
+<link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/sub.css') }}" />
+<script>
+$(function(){
+    path = window.location.pathname;
+    $(".sub_list").each(function(){
+        var href = $(this).find('a').attr("href");
+        if (href == path){
+            $(this).addClass("selected");
+        }
+    })
+});
+</script>
+<style>
+#menu_box{
+    width: 280px;
+}
+#menu_title{
+    background: #4f6773 url(/static/images/menubg2-2.jpg) 0 0 repeat;
+}
+.menu_list{
+    font-size: 12px;
+    font-weight: normal;
+}
+#content_box {
+    width: 718px;
+}
+#content_body h1{
+    font-size: 28px;
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+}
+#content_body ul{
+    list-style: disc;
+    margin-left: 60px;
+}
+</style>
+{% endblock %}
+{% block main %}
+<div id="sub_main">
+    <div id="menu_box">
+        <div class="wrapper">
+            <div id="menu_title">{{nav.title}}</div>
+            <ul class="menu">
+            {% for l in categories %}
+                <li class="sub_list">
+                    <a href="{{l.url}}"><span class="menu_list">{{l.title}}</span></a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="content_box">
+        <ul id="crumbs">
+            <li><a href="/">首页</a></li>
+            <li><a>{{ nav.title }}</a></li>
+            <li><a>普及型高性能计算机体系结构</a></li>
+        </ul>
+        <div id="content">
+            <div id="content_title"> </div>
+            <div id="content_body">
+                <h1>普及型高性能计算机系统软件及理论</h1>
+
+                <p>本方向研究团队有教授4人、副教授4人,具有博士学位10人。</p>
+                <p>本方向与硬件和体系结构研究紧密结合,采用软硬件协同的办法进行普及型高性能计算机的软件与理论研究,主要研究内容包括：</p>
+                <ul>
+                    <li>高性能计算理论模型与基础算法</li>
+                    <li>普及型高性能计算机系统软件</li>
+                    <li>普及型高性能计算机支撑软件</li>
+                    <li>混合异构环境计算模型及算法设计与实现</li>
+                </ul>
+                <p>本方向提出了“软件理论-软件工程-软件应用”一套完整的软件理论与工程体系结构。目前在研的国家和省部级科研项目10余项,在AAAI顶级国际会议、Journal of System Architecture、Journal of Parallel and Distributed Computing、ACM Transactions in Embedded Computing Systems、软件学报、计算机研究与发展等国内外学术期刊发表SCI/EI论文100余篇。于2011年在深圳大学建立了深圳市“移动互联网中间件工程实验室”,拥有“IBM System Z10” 等大型设备,为本方向的教学和科研提供了所需的实验平台。</p>
+
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+{% endblock %}

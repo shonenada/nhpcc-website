@@ -12,25 +12,6 @@ $(function(){
     })
 });
 </script>
-<style>
-.member-avatar{
-    float: left;
-    width: 130px;
-}
-.member-avatar img{
-    width: 100px;
-    height: 143px;
-}
-.member-intro{
-    float: left;
-}
-.member-intro p{
-    text-indent: 0px !important;
-}
-.member-more-btn{
-    float: right;
-}
-</style>
 {% endblock %}
 {% block main %}
 <div id="sub_main">
@@ -53,12 +34,14 @@ $(function(){
             <li><a href="{{nav.url}}">{{nav.title}}</a></li>
             <li><a>项目列表</a></li>
         </ul>
-        <div id="content">
+        <div id="content" class="content-list">
             <div id="content_title"> </div>
             <div id="content_body">
+            <ul>
             {% for project in projects %}
-                {{ project.title }}
+                <li><a href="/projects/{{project.id}}" >{{ project.title }}</a></li>
             {% endfor %}
+            </ul>
             </div>
         </div>
     </div>

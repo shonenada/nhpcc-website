@@ -12,6 +12,13 @@ $(function(){
     })
 });
 </script>
+<style>
+.list_right_info{
+    text-align: center;
+    font-size: 12px;
+    color: #acacac;
+}
+</style>
 {% endblock %}
 {% block main %}
 <div id="sub_main">
@@ -35,7 +42,8 @@ $(function(){
             <li><a href="{{sub.url}}">{{sub.title}}</a></li>
         </ul>
         <div id="content">
-            <div id="content_title">{{ article.title }}</div>
+            <div id="content_title">{{ article.title | raw}}</div>
+            <div class='list_right_info'>作者：{{ article.author.name }}　发布日期：{{article.created|date("Y-m-d H:i:s")}}　浏览次数：{{article.readCount}}</div>
             <div id="content_body">
                 {{ article.content|raw }}
             </div>

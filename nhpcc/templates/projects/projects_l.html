@@ -13,22 +13,8 @@ $(function(){
 });
 </script>
 <style>
-.member-avatar{
-    float: left;
-    width: 130px;
-}
-.member-avatar img{
-    width: 100px;
-    height: 143px;
-}
-.member-intro{
-    float: left;
-}
-.member-intro p{
-    text-indent: 0px !important;
-}
-.member-more-btn{
-    float: right;
+.light-color{
+    background: rgb(229, 238, 243);
 }
 </style>
 {% endblock %}
@@ -53,12 +39,31 @@ $(function(){
             <li><a href="{{nav.url}}">{{nav.title}}</a></li>
             <li><a>{{sub.title}}</a></li>
         </ul>
-        <div id="content">
-            <div id="content_title"> </div>
+        <div id="content" class="content-list">
+            <div id="content_title">国家级科研项目</div>
             <div id="content_body">
-            {% for project in projects %}
-                {{ project.title }}
-            {% endfor %}
+                <table class="list-table">
+                    <tr class="list-head">
+                        <td>立项年度</td>
+                        <td>项目编号</td>
+                        <td>项目名称</td>
+                        <td>计划类别</td>
+                        <td>负责人</td>
+                        <td>完成时间</td>
+                    </tr>
+                    {% set i = 1 %}
+                    {% for l in projects %}
+                    <tr {% if i % 2 == 0 %}class="light-color"{%endif%}>
+                        <td>{{l.year}}</td>
+                        <td>{{l.no}}</td>
+                        <td>{{l.name }}</td>
+                        <td>{{l.type}}</td>
+                        <td>{{l.people|raw}}</td>
+                        <td>{{l.finish}}</td>
+                    </tr>
+                    {% set i = i + 1 %}
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>
