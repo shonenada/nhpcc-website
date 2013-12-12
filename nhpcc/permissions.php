@@ -11,6 +11,10 @@ $administrator = new Administrator();
 return array(
     "allow" => array(
         array($everyone, "/", "*"),
+        array($everyone, "/news", "GET"),
+        array($everyone, "/news/\d+", "GET"),
+        array($everyone, "/annoucnt", "GET"),
+        array($everyone, "/annoucnt/\d+", "GET"),
 
         array($everyone, "/reg", "GET"),
         array($everyone, "/login", "GET"),
@@ -25,6 +29,10 @@ return array(
         array($everyone, "/article/\d+", "GET"),
 
         array($everyone, "/research", "GET"),
+        array($everyone, "/research/system", "GET"),
+        array($everyone, "/research/theory", "GET"),
+        array($everyone, "/research/security", "GET"),
+        array($everyone, "/research/sustain", "GET"),
 
         array($everyone, "/projects", "GET"),
         array($everyone, "/projects/\d+", "GET"),
