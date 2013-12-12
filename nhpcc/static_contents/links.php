@@ -10,6 +10,4 @@ return array("main" => array(
         array("title" => "中华人民共和国科学技术部", "url" => "http://www.most.gov.cn"),
         array("title" => "国家自然科学基金委员会", "url" => "http://www.nsfc.gov.cn/"),
         array("title" => "国家重点实验室", "url" => "http://www.chinalab.gov.cn/"),
-        array("title" => "中国食品科技学会", "url" => "http://www.cifst.org.cn/"),
-        array("title" => "南昌大学国家重点实验室", "url" => "http://sklf.ncu.edu.cn/")
     ));
