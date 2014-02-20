@@ -47,6 +47,7 @@ $(function(){
             <div id="content_body">
                 <table class="list-table">
                     <tr class="list-head">
+                        <td>项目名称</td>
                         <td>获奖时间</td>
                         <td>获奖人</td>
                         <td>获奖类别名称和等级</td>
@@ -54,6 +55,7 @@ $(function(){
                     {% set i = 1 %}
                     {% for l in awards %}
                     <tr {% if i % 2 == 0 %}class="light-color"{%endif%}>
+                        <td>{{l.name}}</td>
                         <td>{{l.time}}</td>
                         <td>{{l.people}}</td>
                         <td>{{l.level}}</td>

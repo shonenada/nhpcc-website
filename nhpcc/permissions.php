@@ -54,8 +54,7 @@ return array(
         array($everyone, "/foundation", "GET"),
         array($everyone, "/foundation/manage", "GET"),
         array($everyone, "/foundation/guide", "GET"),
-        array($everyone, "/foundation/list", "GET"),
-        array($everyone, "/foundation/contract", "GET"),
+        array($everyone, "/foundation/funding", "GET"),
         array($everyone, "/foundation/\d+", "GET"),
 
         array($everyone, "/train", "GET"),

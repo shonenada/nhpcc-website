@@ -6,8 +6,10 @@ return array(
     "export" => function($app) {
 
         $cat = require(APPROOT. 'static_contents/categories.php');
+        $train = require(APPROOT. 'static_contents/train.php');
 
         $app->get("/train", function() use($app, $cat) {
+            $app->redirect("/train/graduate");
             $nav = $cat['train'];
             $categories = $nav['sub'];
             $teachers = Article::getSpecList(Article::getCat("TRAIN_TEACHERS"), 1 ,10);
@@ -25,12 +27,12 @@ return array(
             $app->render("sub-index.html", get_defined_vars());
         });
 
-        $app->get("/train/graduate", function() use($app, $cat) {
+        $app->get("/train/graduate", function() use($app, $cat, $train) {
             $nav = $cat['train'];
             $categories = $nav['sub'];
             $sub = $categories['graduate'];
-            $arts = Article::getSpecList(Article::getCat("TRAIN_GRADUATE"), 1 ,10);
-            $app->render("sub-index.html", get_defined_vars());
+            $graduates = $train['graduates'];
+            $app->render("train/graduate.html", get_defined_vars());
         });
 
         $app->get("/train/loongson", function() use($app, $cat) {

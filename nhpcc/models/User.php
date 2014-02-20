@@ -177,7 +177,7 @@ class User extends ModelBase{
     static public function getTeamList() {
         $dql = sprintf(
             'SELECT n FROM %s n WHERE n.level = %d or n.level = %d'.
-            'ORDER BY n.id ASC',
+            'ORDER BY n.created ASC',
             get_called_class(),
             User::TEACHER_LEVEL,
             User::SUPER_USER_LEVE

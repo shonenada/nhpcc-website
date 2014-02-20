@@ -12,9 +12,8 @@ return array(
             $categories = $nav['sub'];
             $manage = Article::getSpecList(Article::getCat("FOUNDATION_MANAGE"), 1, 10);
             $guide = Article::getSpecList(Article::getCat("FOUNDATION_GUIDE"), 1, 10);
-            $list = Article::getSpecList(Article::getCat("FOUNDATION_LIST"), 1, 10);
-            $contract = Article::getSpecList(Article::getCat("FOUNDATION_CONTRACT"), 1, 10);
-            $arts = array_merge($manage, $guide, $list, $contract);
+            $funding = Article::getSpecList(Article::getCat("FOUNDATION_FUNDING"), 1, 10);
+            $arts = array_merge($manage, $guide, $funding);
             $app->render("sub-index.html", get_defined_vars());
         });
 
@@ -42,12 +41,13 @@ return array(
             $app->render("sub-index.html", get_defined_vars());
         });
 
-        $app->get("/foundation/contract", function() use($app, $cat) {
+        $app->get("/foundation/funding", function() use($app, $cat) {
+            $foundation = require(APPROOT. 'static_contents/foundation.php');
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
-            $sub = $categories['contract'];
-            $arts = Article::getSpecList(Article::getCat("FOUNDATION_CONTRACT"), 1, 50);
-            $app->render("sub-index.html", get_defined_vars());
+            $sub = $categories['funding'];
+            $arts = Article::getSpecList(Article::getCat("FOUNDATION_FUNDING"), 1, 50);
+            $app->render("/foundation/fundings.html", get_defined_vars());
         });
 
         $app->get("/foundation/:id", function($id) use($app, $cat) {

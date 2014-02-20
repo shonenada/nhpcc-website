@@ -44,22 +44,20 @@ $(function(){
             <div id="content_body">
                 <table class="list-table">
                     <tr class="list-head">
-                        <td>立项年度</td>
-                        <td>项目编号</td>
-                        <td>项目名称</td>
-                        <td>计划类别</td>
-                        <td>负责人</td>
-                        <td>完成时间</td>
+                        <td>序号</td>
+                        <td>开放课题名称</td>
+                        <td>承担单位</td>
+                        <td>时间</td>
+                        <td>金额（万元）</td>
                     </tr>
                     {% set i = 1 %}
-                    {% for l in projects %}
+                    {% for l in foundation %}
                     <tr {% if i % 2 == 0 %}class="light-color"{%endif%}>
-                        <td>{{l.year}}</td>
                         <td>{{l.no}}</td>
-                        <td>{{l.name }}</td>
-                        <td>{{l.type}}</td>
-                        <td>{{l.people|raw}}</td>
-                        <td>{{l.finish}}</td>
+                        <td>{{l.name}}</td>
+                        <td>{{l.unit }}</td>
+                        <td>{{l.time}}</td>
+                        <td>{{l.money}}</td>
                     </tr>
                     {% set i = i + 1 %}
                     {% endfor %}

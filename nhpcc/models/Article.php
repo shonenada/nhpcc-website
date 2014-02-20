@@ -20,7 +20,7 @@ class Article extends ModelBase {
         'INDEX' => array('首页', array(
             'NEWS' => array(1, '新闻简报'),
             'ANNOUNCE' => array(5, '通知公告'),
-            'ACTIVATY' => array(9, '学术活动'),
+            'ACTIVATY' => array(9, '学术交流'),
             )),
         'PROJECT' => array('承担项目', array(
             'L' => array(11, '纵向课题'),
@@ -37,10 +37,11 @@ class Article extends ModelBase {
             'REPORT' => array(32, '学术报告'),
             )),
         'FOUNDATION' => array('开放基金', array(
-            'MANAGE' => array(41, '开放课题管理办法'),
-            'GUIDE' => array(42, '开放课题申请指南'),
-            'LIST' => array(43, '开放课题目录'),
-            'CONTRACT' => array(44, '开放课题合同书'),
+            'MANAGE' => array(41, '管理规定'),
+            'GUIDE' => array(42, '指南通告'),
+            // 'LIST' => array(43, '开放课题目录'),
+            // 'CONTRACT' => array(44, '开放课题合同书'),
+            'FUNDING' => array(45, '历年资助'),
             )),
         'TRAIN' => array('人才培养', array(
             'TEACHERS' => array(51, '导师'),

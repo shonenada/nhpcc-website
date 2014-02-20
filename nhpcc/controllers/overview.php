@@ -24,24 +24,18 @@ return array(
             $generateStaticContent($app, 'overview', 'introduction');
         });
 
-        // $app->get("/overview/academic", function() use($app, $generateStaticContent){
-        //     $generateStaticContent($app, 'overview', 'academic');
-        // });
-
         $app->get("/overview/team", function() use($app, $cat, $atcle) {
             $team = User::getTeamList();
-            $nav = $cat['overview'];
+            $nav = $cat['team'];
             $categories = $nav['sub'];
-            $sub = $categories['team'];
             $article = $atcle['overview']['team'];
             $app->render('overview/team.html', get_defined_vars());
         });
 
         $app->get("/overview/team/:id", function($id) use($app, $cat, $atcle) {
             $teacher = User::find($id);
-            $nav = $cat['overview'];
+            $nav = $cat['team'];
             $categories = $nav['sub'];
-            $sub = $categories['team'];
             $article = $atcle['overview']['team'];
             $app->render("overview/team-member.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));

@@ -12,6 +12,15 @@ $(function(){
     })
 });
 </script>
+<style>
+.light-color{
+    background: rgb(229, 238, 243);
+}
+.list-table {
+    width: 300px;
+    text-align: center;
+}
+</style>
 {% endblock %}
 {% block main %}
 <div id="sub_main">
@@ -31,15 +40,26 @@ $(function(){
     <div id="content_box">
         <ul id="crumbs">
             <li><a href="/">首页</a></li>
-            <li><a href="">{{nav.title}}</a></li>
+            <li><a href="{{nav.url}}">{{nav.title}}</a></li>
+            <li><a>{{sub.title}}</a></li>
         </ul>
-        <div id="content">
-            <div id="content_title">下载中心</div>
+        <div id="content" class="content-list">
+            <div id="content_title">研究生名单</div>
             <div id="content_body">
-                <ul style="list-style: disc;">
-                    <li><a href="/uploads/download/课题申报表2013.doc">课题申报表2013</a></li>
-                    <li><a href="/uploads/download/实验室开放课题合同书定稿2013版.doc">实验室开放课题合同书定稿2013版</a></li>
-                </ul>
+                <table class="list-table">
+                    <tr class="list-head">
+                        <td>编号</td>
+                        <td>研究生名</td>
+                    </tr>
+                    {% set i = 1 %}
+                    {% for l in graduates %}
+                    <tr {% if i % 2 == 0 %}class="light-color"{%endif%}>
+                        <td>{{ i }}</td>
+                        <td>{{l}}</td>
+                    </tr>
+                    {% set i = i + 1 %}
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>

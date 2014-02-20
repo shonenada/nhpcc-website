@@ -7,7 +7,7 @@ return array(
     "export" => function($app) {
         $app->get("/admin/article", function() use($app) {
             $page = $app->request->params("page") ? $app->request->params("page") : 1;
-            $article = Article::getList($page);
+            $article = Article::getList($page, 500);
             foreach($article as &$n){
                 $uid = $n->getAuthor();
                 $qu = User::find($uid);
@@ -71,6 +71,7 @@ return array(
             $action = 'edit';
             $queryArticle = Article::find($id);
             $queryArticle->setAuthor(User::find($queryArticle->getAuthor()));
+            $categories = Article::$categories;
             $app->render("admin/article-view.html", get_defined_vars());
         })->conditions(array('id' => '\d+'));
 

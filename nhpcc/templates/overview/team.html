@@ -65,7 +65,9 @@ $(function(){
                             <p>{{ t.shortIntro|raw }}</p>
                         </div>
                         <div class="member-more-btn">
-                            <a href="/overview/team/{{t.id}}"><img src="/static/images/xiangxi.gif" border="0"/></a>
+                        {% if t.name == '毛睿' %}<a href="http://nhpcc.szu.edu.cn/mao/">{%else%}
+                            <a href="/overview/team/{{t.id}}">
+                            {% endif %}<img src="/static/images/xiangxi.gif" border="0"/></a>
                         </div>
                         <div style="clear: both;"></div>
                     </div>

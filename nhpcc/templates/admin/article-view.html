@@ -65,9 +65,11 @@ $('#article_edit_form').ajaxForm({
         <li><label>作者：</label> {{ queryArticle.author.name }}</li>
         <li><label>类型：</label>
         <select name="category">
-            <option value="1" {% if queryArticle.category == 1 %}selected="selected"{% endif %}>新闻简报</option>
-            <option value="5" {% if queryArticle.category == 5 %}selected="selected"{% endif %}>通知公告</option>
-            <option value="9" {% if queryArticle.category == 9 %}selected="selected"{% endif %}>学术活动</option>    
+            {% for key, cat in categories %}
+            {% for c in cat[1] %}
+            <option {% if c[0] == queryArticle.category %}selected="selected"{%endif%} value="{{ c[0] }}">{{ cat[0] }} / {{ c[1] }}</option>
+            {% endfor %}
+            {% endfor %}
         </select>
         <li><label>内容：</label><br />
         <textarea cols="100" rows="10" name="content">{{ queryArticle.content }}</textarea></li>

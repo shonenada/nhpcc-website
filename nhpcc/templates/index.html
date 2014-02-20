@@ -5,9 +5,15 @@
 <script src="/static/scripts/plugins/05e0com.js"></script>
 {% endblock %}
 {% block main %}
+
 <div id="main">
     <div id="left">
-        <a href="/news" style="text-decoration: none;"><h2>信息简报 <span>News</span></h2></a>
+        <h2>信息简报 <span>News</span>
+            <a href="http://csse.szu.edu.cn/2012/index.php/article/view/aid/481.html" style="text-decoration: none;">
+            <span id="yth"><img src="/static/images/new.gif" /> 第二届华南计算机学科发展研讨会</span>
+            </a>
+        <a href="/news" id='more-new-btn'></a>
+        </h2>
         <div id="slider_box">
             <div id="slider" style="visibility: hidden;">
                 <div class="loading">请稍候...</div>
@@ -59,7 +65,7 @@
         <div id="intro_box">
             <h3>院士介绍</h3>
             <div id="person_intro">
-                    <img src="/static/images/uploads/index/chenguoliang.jpg" width="100" height="134" />
+                    <a href="/overview/team/9"><img src="/static/images/uploads/index/chenguoliang.jpg" width="100" height="134" /></a>
                     {{ academician_intro }}<br />
                     <a href="/overview/team/9" class="more">详细了解</a>
             </div>
@@ -70,7 +76,9 @@
         <div id="links_box">
             {% for l in main_links %}
             <p>
-                <a href="{{ l.url }}" style="background: url({{l.pic}})" title="{{ l.title }}" alt="{{l.title}}" class="{{l.name}}" target="_blank">{{ l.title }}</a>
+                <a href="{{ l.url }}" title="{{ l.title }}" alt="{{l.title}}" class="{{l.name}}" target="_blank">
+                    <img src="{{l.pic}}" title="{{ l.title }}" />
+                </a>
             </p>
             {% endfor %}
             <br />
