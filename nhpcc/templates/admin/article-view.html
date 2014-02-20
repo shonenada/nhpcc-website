@@ -3,6 +3,10 @@
 
 {% block headhtml %}
 <link href="/static/styles/admin/account.css" media="all" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="{{siteUrl('/static/scripts/plugins/ueditor/ueditor.config.js')}}"></script>
+<script type="text/javascript" charset="utf-8" src="{{siteUrl('/static/scripts/plugins/ueditor/ueditor.all.min.js')}}"> </script>
+<script type="text/javascript" charset="utf-8" src="{{siteUrl('/static/scripts/plugins/ueditor/lang/zh-cn/zh-cn.js')}}"></script>
+
 <style>
 #article-list{
     width: 100%;
@@ -72,7 +76,10 @@ $('#article_edit_form').ajaxForm({
             {% endfor %}
         </select>
         <li><label>内容：</label><br />
-        <textarea cols="100" rows="10" name="content">{{ queryArticle.content }}</textarea></li>
+        <script id="editor" type="text/plain" name="content" style="min-height:300px;">
+            {{ queryArticle.content | raw }}
+        </script>
+        </li>
     {% endif %}
     </ul>
     <div id="btns">
@@ -80,9 +87,12 @@ $('#article_edit_form').ajaxForm({
         <a href="/admin/article/{{queryArticle.id}}/edit">编辑</a>
         {% elseif action == 'edit' %}
         <input type="submit" value="修改" />
-        <input type="button" value="取消" onclick="location.href='/admin/article/{{queryArticle.id}}';"/>
+        <input type="button" value="取消" onclick="location.href='/admin/article';"/>
         {% endif %}
     </div>
 </form>
 </div>
+
+<script type="text/javascript" charset="utf-8" src="{{siteUrl('/static/scripts/ueditor.js')}}"></script>
+
 {% endblock %}
