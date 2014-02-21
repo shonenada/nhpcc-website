@@ -1,6 +1,12 @@
 <?php
 
-require_once(APPROOT. "rbac/roles.php");
+use RBAC\Roles\EveryOne;
+use RBAC\Roles\NormalUser;
+use RBAC\Roles\Student;
+use RBAC\Roles\Teacher;
+use RBAC\Roles\SuperUser;
+use RBAC\Roles\Administrator;
+
 $everyone = new EveryOne();
 $normal = new NormalUser();
 $student = new Student();

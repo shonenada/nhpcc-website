@@ -1,5 +1,6 @@
 <?php
-require_once(APPROOT . "models/User.php");
+
+use Model\User;
 
 return array(
     "export" => function($app) {

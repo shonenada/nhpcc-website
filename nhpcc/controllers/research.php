@@ -1,7 +1,5 @@
 <?php
 
-require_once(APPROOT . "models/Article.php");
-
 return array(
     "export" => function($app) {
 

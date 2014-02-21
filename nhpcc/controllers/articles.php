@@ -1,8 +1,9 @@
 <?php
 
+use Model\User;
+use Model\Article;
+
 require_once(APPROOT . "utils.php");
-require_once(APPROOT . "models/User.php");
-require_once(APPROOT . "models/Article.php");
 
 return array(
     "export" => function($app) {

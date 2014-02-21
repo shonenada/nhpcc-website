@@ -1,6 +1,6 @@
 <?php
 
-require_once(APPROOT. "models/ModelBase.php");
+namespace Model;
 
 /** 
  * @Entity 

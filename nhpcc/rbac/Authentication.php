@@ -1,5 +1,7 @@
 <?php
 
+namespace RBAC;
+
 class Authentication{
 
     private $ptable = array();
@@ -14,9 +16,9 @@ class Authentication{
         return $this;
     }
 
-    public function accessiable(User $user=null, $resource=null, $method=null){
+    public function accessiable(\Model\User $user=null, $resource=null, $method=null){
 
-        $auth = function(Role $r=null, User $u=null){
+        $auth = function(Role $r=null, \Model\User $u=null){
             return $r ? $r->authenticate($u) : false;
         };
 

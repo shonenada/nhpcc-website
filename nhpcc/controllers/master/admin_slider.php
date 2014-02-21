@@ -1,6 +1,6 @@
 <?php
 
-require_once(APPROOT . "models/Slider.php");
+use Model\Slider;
 
 return array(
     "export" => function($app) {

@@ -1,7 +1,7 @@
 <?php
 
-require_once(APPROOT . "models/User.php");
-require_once(APPROOT . "models/Article.php");
+use Model\User;
+use Model\Article;
 
 return array(
     "export" => function($app) {

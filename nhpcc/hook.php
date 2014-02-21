@@ -1,7 +1,9 @@
 <?php
 
 require_once(APPROOT. "view.php");
-require_once(APPROOT. "models/User.php");
+
+use Model\User;
+use RBAC\Authentication;
 
 function setup_hooks($app){
     $app->hook("slim.before.router", function() use($app){
@@ -23,7 +25,6 @@ function setup_hooks($app){
         $user = $app->environment['user'];
         $method = $app->request->getMethod();
 
-        require_once(APPROOT. "rbac/authenticate.php");
         $ptable = require(APPROOT. "permissions.php");
         $auth = new Authentication();
         $auth->load($ptable);

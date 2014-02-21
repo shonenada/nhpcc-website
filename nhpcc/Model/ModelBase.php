@@ -1,5 +1,7 @@
 <?php
 
+namespace Model;
+
 class ModelBase {
 
     public function save() {
@@ -53,8 +55,8 @@ class ORMManager {
     public static function init() {
         $db_params = require(APPROOT. 'config/database.php');
 
-        $config = new Doctrine\ORM\Configuration();
-        $eventManager = new Doctrine\Common\EventManager();
+        $config = new \Doctrine\ORM\Configuration();
+        $eventManager = new \Doctrine\Common\EventManager();
 
         $driver = $config->newDefaultAnnotationDriver(array(APPROOT. "models/"));
 
@@ -63,17 +65,17 @@ class ORMManager {
         $config->setProxyNamespace("nhpccProxy");
 
         if (extension_loaded('wincache')) {
-            $config->setMetadataCacheImpl(new Doctrine\Common\Cache\WinCache());
-            $config->setQueryCacheImpl(new Doctrine\Common\Cache\WinCache());
-            $config->setResultCacheImpl(new Doctrine\Common\Cache\WinCache());
+            $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\WinCache());
+            $config->setQueryCacheImpl(new \Doctrine\Common\Cache\WinCache());
+            $config->setResultCacheImpl(new \Doctrine\Common\Cache\WinCache());
         } else if (extension_loaded('apc')) {
-            $config->setMetadataCacheImpl(new Doctrine\Common\Cache\ApcCache());
-            $config->setQueryCacheImpl(new Doctrine\Common\Cache\ApcCache());
-            $config->setResultCacheImpl(new Doctrine\Common\Cache\ApcCache());
+            $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ApcCache());
+            $config->setQueryCacheImpl(new \Doctrine\Common\Cache\ApcCache());
+            $config->setResultCacheImpl(new \Doctrine\Common\Cache\ApcCache());
         } else {
-            $config->setMetadataCacheImpl(new Doctrine\Common\Cache\ArrayCache());
+            $config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache());
         }
-        self::$entityManager = Doctrine\ORM\EntityManager::create($db_params, $config, $eventManager);
+        self::$entityManager = \Doctrine\ORM\EntityManager::create($db_params, $config, $eventManager);
     }
 
     static public function getEntityManager() {
