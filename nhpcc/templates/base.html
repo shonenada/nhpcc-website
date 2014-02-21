@@ -27,8 +27,9 @@
         <div id="header_title">广东省重点实验室 国家高性能计算深圳中心</div>
         <div id="header_link">
             <ul class="top-link">
-                <li class="first">{% if currentUser %}{{currentUser.username}}，您好</li>
-                {% if currentUser.level >=9 %}<li><a href="/admin">后台管理</a></li>{%endif%}
+                <li class="first">{% if currentUser %}{{ currentUser.username }}，您好</li>
+                <li><a href="/profile">个人信息</a></li>
+                {% if currentUser.level >= 9 %}<li><a href="/admin">后台管理</a></li>{% endif %}
                 <li><a id="logout-btn" class="logout-btn" href="#logout">退出</a>{% else %}<a href="/login">登录</a>{% endif %}</li>
             </ul>
         </div>
@@ -43,7 +44,7 @@
         <ul id='nav'>
             {% for name, item in global.categories %}
             <li>
-                <a href="{{item.url}}" {%- if item.id %}id="{{item.id}}"{%- endif %} alt="{{item.title}}">{{item.title}}</a>
+                <a href="{{ item.url }}" {%- if item.id %}id="{{ item.id }}"{%- endif %} alt="{{ item.title }}">{{ item.title }}</a>
                 {% if item.sub %}
                 <ul>
                 {% for sub in item.sub %}

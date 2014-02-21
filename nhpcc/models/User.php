@@ -10,6 +10,8 @@ require_once(APPROOT. "models/ModelBase.php");
  * @property string    $username
  * @property string    $password
  * @property string    $name
+ * @property string    $email
+ * @property string    $phone
  * @property datetime  $created
  * @property datetime  $lastLogin
  * @property string    $ip
@@ -49,6 +51,16 @@ class User extends ModelBase{
     private $name;
 
     /**
+     * @Column(name="email", type="string", length=50)
+     **/
+    private $email;
+
+    /**
+     * @Column(name="phone", type="string", length=11)
+     **/
+    private $phone;
+
+    /**
      * @Column(name="created", type="datetime")
      **/
     private $created;
@@ -86,6 +98,10 @@ class User extends ModelBase{
         return $this->username;
     }
 
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+
     public function setPassword($raw, $salt) {
         $hashPassword = User::hashPassword($raw, $salt);
         $this->password = $hashPassword;
@@ -97,6 +113,22 @@ class User extends ModelBase{
 
     public function setName($name) {
         $this->name = $name;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function getPhone() {
+        return $this->phone;
+    }
+
+    public function setPhone($phone) {
+        $this->phone = $phone;
     }
 
     public function getCreated() {
@@ -129,6 +161,10 @@ class User extends ModelBase{
 
     public function getIntro() {
         return $this->intro;
+    }
+
+    public function setIntro($intro){
+        $this->intro = $intro;
     }
 
     public function getLevel() {

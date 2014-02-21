@@ -70,6 +70,9 @@ return array(
         array($everyone, "/download", "GET"),
         array($everyone, "/download/\d+", "GET"),
 
+        array($normal, "/profile", "GET"),
+        array($normal, "/profile/edit", "PUT"),
+
 
         array($administrator, "/admin", "GET"),
         array($administrator, "/admin/status", "GET"),

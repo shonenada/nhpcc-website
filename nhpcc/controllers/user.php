@@ -70,5 +70,26 @@ return array(
             }
 
         });
+
+        $app->get("/profile", function () use ($app) {
+            $app->render('user/profile.html');
+        });
+
+        $app->put("/profile/edit", function () use ($app) {
+            $currentUser = $app->environment["user"];
+            $currentUser->setName($app->request->params("name"));
+            $currentUser->setUsername($app->request->params("username"));
+            $currentUser->setEmail($app->request->params("email"));
+            $currentUser->setPhone($app->request->params("phone"));
+            $currentUser->setShortIntro($app->request->params("short_intro"));
+            $currentUser->setIntro($app->request->params("intro"));
+            $currentUser->save();
+            $currentUser->flush();
+            $output = array("success" => true,
+                            "message" => array("修改成功"));
+            echo json_encode($output);
+            return ;
+        });
+
     }
 );
