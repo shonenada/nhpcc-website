@@ -8,7 +8,7 @@ class Routex extends \Slim\Route {
             call_user_func_array($mw, array($this));
         }
 
-        $return = call_user_func($this->getCallable(), array_values($this->getParams()));
+        $return = call_user_func_array($this->getCallable(), array_values($this->getParams()));
         echo $return;
 
         return ($return === false || $return === "") ? false : true;
