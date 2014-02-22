@@ -2,7 +2,6 @@
 
 require_once(APPROOT . 'utils.php');
 require_once(APPROOT . 'extensions.php');
-require_once(APPROOT . 'hook.php');
 
 // Require all controllers. But some controllers need to be merged or removed
 $controllers = array (
