@@ -4,6 +4,7 @@ require_once(APPROOT . 'utils.php');
 require_once(APPROOT . 'extensions.php');
 
 $config = require_once(APPROOT . 'config/config.php');
+
 // Require all controllers. But some controllers need to be merged or removed
 $controllers = array (
     'home_app' => require_controller('master/home'),
@@ -43,6 +44,7 @@ function create_app ($config_files=array()) {
     // Register all controllers in global variable $controllers
     global $controllers;
     extract($controllers);
+
     $app->register_controller($home_app);
     $app->register_controller($article_app);
     $app->register_controller($overview_app);

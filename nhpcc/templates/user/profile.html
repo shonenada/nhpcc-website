@@ -8,7 +8,7 @@
 <script type="text/javascript" charset="utf-8" src="{{ siteUrl('/static/scripts/plugins/ueditor/lang/zh-cn/zh-cn.js') }}"></script>
 <style>
 #user-list{
-    width: 600px;
+    width: 100%;
     margin: 0 auto;
 }
 #user-list li{
@@ -19,14 +19,9 @@
     width: 100%;
 }
 #user-list label{
-    width: 200px;
+    width: 100px;
     display: inline-block;
     text-align: right;
-}
-#user-list span{
-    width: 300px;
-    display: inline-block;
-    text-align: left;
 }
 </style>
 <script type="text/javascript">
@@ -63,16 +58,16 @@ $('#user_edit_form').ajaxForm({
         </li>
         <li><label>邮箱：</label><input type="text" value="{{ currentUser.email }}" name="email" /></li>
         <li><label>手机号码：</label><input type="text" value="{{ currentUser.phone }}" name="phone" /></li>
-        <li><label>简短介绍：</label><script id="short_intro" type="text/plain" name="short_intro" style="min-height:200px;width: 550px">{{ currentUser.shortIntro | raw }}</script></li>
-        <li><label>详细介绍：</label><script id="intro" type="text/plain" name="intro" style="min-height:400px;width: 550px">{{ currentUser.intro | raw }}</script></li>
+        <li><label>简短介绍：</label><br /><textarea name="short_intro" style="height:300px; width:700px;">{{ currentUser.shortIntro | raw }}</textarea></li>
+        <li><label>详细介绍：</label><br /><script id="intro" type="text/plain" name="intro" style="min-height:300px;width: 700px">{{ currentUser.intro | raw }}</script></li>
     </ul>
     <div id="btns">
-        <button>提交</button>
+        <button class="btn">提交</button>
     </div>
 </form>
 </div>
 <script>
     UE.getEditor('short_intro');
     UE.getEditor('intro');
-</script
+</script>
 {% endblock %}

@@ -107,6 +107,10 @@ class User extends ModelBase{
         $this->password = $hashPassword;
     }
 
+    public function checkPassword($raw, $salt) {
+        return ($this->password == self::hashPassword($raw, $salt));
+    }
+
     public function getName() {
         return $this->name;
     }

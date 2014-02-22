@@ -78,6 +78,8 @@ return array(
 
         array($normal, "/profile", "GET"),
         array($normal, "/profile/edit", "PUT"),
+        array($normal, "/profile/password", "GET"),
+        array($normal, "/profile/password", "PUT"),
 
 
         array($administrator, "/admin", "GET"),
