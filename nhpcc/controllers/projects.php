@@ -9,7 +9,7 @@ return array(
         $app->get("/projects", function() use($app, $cat, $projects) {
             $nav = $cat['achievements'];
             $categories = $nav['sub'];
-            $app->render("projects/projects_l.html", get_defined_vars());
+            return $app->render("projects/projects_l.html", get_defined_vars());
         });
     }
 );

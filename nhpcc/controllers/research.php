@@ -13,24 +13,24 @@ return array(
         );
 
         $app->get("/research", function() use($app, $cat) {
-            $app->redirect("/research/system");
+            return $app->redirect("/research/system");
         });
 
         $app->get("/research/system", function() use($app, $cat, $categories) {
             $nav = $cat['research'];
-            $app->render("research/system.html", get_defined_vars());
+            return $app->render("research/system.html", get_defined_vars());
         });
         $app->get("/research/theory", function() use($app, $cat, $categories) {
             $nav = $cat['research'];
-            $app->render("research/theory.html", get_defined_vars());
+            return $app->render("research/theory.html", get_defined_vars());
         });
         $app->get("/research/security", function() use($app, $cat, $categories) {
             $nav = $cat['research'];
-            $app->render("research/security.html", get_defined_vars());
+            return $app->render("research/security.html", get_defined_vars());
         });
         $app->get("/research/sustain", function() use($app, $cat, $categories) {
             $nav = $cat['research'];
-            $app->render("research/sustain.html", get_defined_vars());
+            return $app->render("research/sustain.html", get_defined_vars());
         });
     }
 );

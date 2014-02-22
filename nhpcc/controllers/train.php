@@ -16,7 +16,7 @@ return array(
             $graduate = Article::getSpecList(Article::getCat("TRAIN_GRADUATE"), 1 ,10);
             $loongson = Article::getSpecList(Article::getCat("TRAIN_LOONGSON"), 1 ,10);
             $arts = array_unique(array_merge($teachers, $graduate, $loongson));
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/train/teachers", function() use($app, $cat) {
@@ -24,7 +24,7 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories['teachers'];
             $arts = Article::getSpecList(Article::getCat("TRAIN_TEACHERS"), 1 ,10);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/train/graduate", function() use($app, $cat, $train) {
@@ -32,7 +32,7 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories['graduate'];
             $graduates = $train['graduates'];
-            $app->render("train/graduate.html", get_defined_vars());
+            return $app->render("train/graduate.html", get_defined_vars());
         });
 
         $app->get("/train/loongson", function() use($app, $cat) {
@@ -40,7 +40,7 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories['loongson'];
             $arts = Article::getSpecList(Article::getCat("TRAIN_LOONGSON"), 1 ,10);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/train/:id", function($id) use($app, $cat) {
@@ -52,7 +52,7 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            $app->render("sub.html", get_defined_vars());
+            return $app->render("sub.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
     }

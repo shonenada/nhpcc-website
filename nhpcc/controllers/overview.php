@@ -13,11 +13,11 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories[$subName];
             $article = $atcle[$category][$subName];
-            $ap->render("sub.html", get_defined_vars());
+            return $app->render("sub.html", get_defined_vars());
         };
 
         $app->get("/overview", function() use($app) {
-            $app->redirect("/overview/introduction");
+            return $app->redirect("/overview/introduction");
         });
 
         $app->get("/overview/introduction", function() use($app, $generateStaticContent) {
@@ -29,7 +29,7 @@ return array(
             $nav = $cat['team'];
             $categories = $nav['sub'];
             $article = $atcle['overview']['team'];
-            $app->render('overview/team.html', get_defined_vars());
+            return $app->render('overview/team.html', get_defined_vars());
         });
 
         $app->get("/overview/team/:id", function($id) use($app, $cat, $atcle) {
@@ -37,7 +37,7 @@ return array(
             $nav = $cat['team'];
             $categories = $nav['sub'];
             $article = $atcle['overview']['team'];
-            $app->render("overview/team-member.html", get_defined_vars());
+            return $app->render("overview/team-member.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
     }

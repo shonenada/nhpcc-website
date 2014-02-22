@@ -13,7 +13,7 @@ return array(
                 $qu = User::find($uid);
                 $n->setAuthor($qu);                
             }
-            $app->render("admin/article.html", get_defined_vars());
+            return $app->render("admin/article.html", get_defined_vars());
         });
 
         $app->post("/admin/article", function() use($app) {
@@ -30,20 +30,19 @@ return array(
             $success = true;
             array_push($message, "添加成功");
             $output = array("success" => $success, "message" => $message);
-            echo json_encode($output);
-            return ;
+            return json_encode($output);
         });
 
         $app->get("/admin/article/create", function() use($app) {
             $categories = Article::$categories;
-            $app->render("admin/article-create.html", get_defined_vars());
+            return $app->render("admin/article-create.html", get_defined_vars());
         });
 
         $app->get("/admin/article/:id", function($id) use($app) {
             $action = 'view';
             $queryArticle = Article::find($id);
             $queryArticle->setAuthor(User::find($queryArticle->getAuthor()));
-            $app->render("admin/article-view.html", get_defined_vars());
+            return $app->render("admin/article-view.html", get_defined_vars());
         })->conditions(array('id' => '\d+'));
 
         $app->put("/admin/article/:id/edit", function($id) use($app) {
@@ -64,7 +63,7 @@ return array(
                 $success = true;
                 array_push($message, "修改成功");
             }
-            echo json_encode(array("success" => $success, "message" => $message));
+            return json_encode(array("success" => $success, "message" => $message));
         })->conditions(array('id' => '\d+'));
 
         $app->get("/admin/article/:id/edit", function($id) use($app) {
@@ -72,7 +71,7 @@ return array(
             $queryArticle = Article::find($id);
             $queryArticle->setAuthor(User::find($queryArticle->getAuthor()));
             $categories = Article::$categories;
-            $app->render("admin/article-view.html", get_defined_vars());
+            return $app->render("admin/article-view.html", get_defined_vars());
         })->conditions(array('id' => '\d+'));
 
         $app->delete("/admin/article/:id", function($id) use($app) {
@@ -84,8 +83,7 @@ return array(
             $message = array("删除成功");
             $output = array("success" => $success,
                             "message" => $message);
-            echo json_encode($output);
-            return ;
+            return json_encode($output);
         })->conditions(array('id' => '\d+'));
     }
 );

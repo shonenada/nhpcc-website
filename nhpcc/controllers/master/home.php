@@ -17,19 +17,19 @@ return array(
             $main_links = $links['main'];
             $sub_links = $links['sub'];
             $sliders = Slider::getList(1, 3);
-            $app->render("index.html", get_defined_vars());
+            return $app->render("index.html", get_defined_vars());
         });
 
         $app->get("/news", function() use($app) {
             $nav = array('url' => '/news', 'title' => '信息简报');
             $arts = Article::getSpecList(Article::getCat("INDEX_NEWS"), 1, 50);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/annoucnt", function() use($app) {
             $nav = array('url' => '/annoucnt', 'title' => '通知公告');
             $arts = Article::getSpecList(Article::getCat("INDEX_ANNOUNCE"), 1, 50);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/news/:id", function($id) use($app) {
@@ -39,7 +39,7 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            $app->render("article.html", get_defined_vars());
+            return $app->render("article.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
         
         $app->get("/annoucnt/:id", function($id) use($app) {
@@ -49,17 +49,17 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            $app->render("article.html", get_defined_vars());
+            return $app->render("article.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
         $app->get("/admin", function() use($app){
             // 后台首页，跳转到运行状态页面
-            $app->redirect("/admin/status");
+            return $app->redirect("/admin/status");
         });
 
         $app->get("/admin/status", function() use($app) {
             // 后台，运行状态
-            $app->render("admin/status.html");
+            return $app->render("admin/status.html");
         });
 
     }

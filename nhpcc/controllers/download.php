@@ -7,7 +7,7 @@ return array(
 
         $app->get("/download", function() use($app, $cat) {
             $nav = $cat['download'];
-            $app->render("download.html", get_defined_vars());
+            return $app->render("download.html", get_defined_vars());
         });
 
     }

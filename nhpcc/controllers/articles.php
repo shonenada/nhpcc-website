@@ -14,7 +14,7 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            $app->render("article.html", get_defined_vars());
+            return $app->render("article.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
     }
 );

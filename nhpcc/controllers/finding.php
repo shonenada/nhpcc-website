@@ -10,7 +10,7 @@ return array(
         $app->get("/finding", function() use($app, $cat) {
             $nav = $cat['finding'];
             $arts = Article::getSpecList(Article::getCat("FINDING_FINDING"), 1, 50);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/finding/:id", function($id) use($app, $cat) {
@@ -21,7 +21,7 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            $app->render("sub.html", get_defined_vars());
+            return $app->render("sub.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
     }

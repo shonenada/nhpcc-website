@@ -15,7 +15,7 @@ return array(
             $guide = Article::getSpecList(Article::getCat("FOUNDATION_GUIDE"), 1, 10);
             $funding = Article::getSpecList(Article::getCat("FOUNDATION_FUNDING"), 1, 10);
             $arts = array_merge($manage, $guide, $funding);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/foundation/manage", function() use($app, $cat) {
@@ -23,7 +23,7 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories['manage'];
             $arts = Article::getSpecList(Article::getCat("FOUNDATION_MANAGE"), 1, 50);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/foundation/guide", function() use($app, $cat) {
@@ -31,7 +31,7 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories['guide'];
             $arts = Article::getSpecList(Article::getCat("FOUNDATION_GUIDE"), 1, 50);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/foundation/list", function() use($app, $cat) {
@@ -39,7 +39,7 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories['list'];
             $arts = Article::getSpecList(Article::getCat("FOUNDATION_LIST"), 1, 50);
-            $app->render("sub-index.html", get_defined_vars());
+            return $app->render("sub-index.html", get_defined_vars());
         });
 
         $app->get("/foundation/funding", function() use($app, $cat) {
@@ -48,7 +48,7 @@ return array(
             $categories = $nav['sub'];
             $sub = $categories['funding'];
             $arts = Article::getSpecList(Article::getCat("FOUNDATION_FUNDING"), 1, 50);
-            $app->render("/foundation/fundings.html", get_defined_vars());
+            return $app->render("/foundation/fundings.html", get_defined_vars());
         });
 
         $app->get("/foundation/:id", function($id) use($app, $cat) {
@@ -60,7 +60,7 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            $app->render("sub.html", get_defined_vars());
+            return $app->render("sub.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
     }

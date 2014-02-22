@@ -9,7 +9,7 @@ return array(
             // 后台，用户管理，用户列表
             $page = $app->request->params("page") ? $app->request->params("page") : 1;
             $users = User::getList($page);
-            $app->render("admin/account.html", get_defined_vars());
+            return $app->render("admin/account.html", get_defined_vars());
         });
 
         $app->post("/admin/account", function() use($app) {
@@ -35,20 +35,19 @@ return array(
                 array_push($message, "用户已存在");
             }
             $output = array("success" => $success, "message" => $message);
-            echo json_encode($output);
-            return ;
+            return json_encode($output);
         });
 
         $app->get("/admin/account/create", function() use($app) {
             // 后台，用户管理，新建用户表单
-            $app->render("admin/account-create.html");
+            return $app->render("admin/account-create.html");
         });
 
         $app->get("/admin/account/:id", function($id) use($app) {
             // 后台，用户管理，浏览用户信息
             $action = "view";
             $queryUser = User::find($id);
-            $app->render("admin/account-view.html", get_defined_vars());
+            return $app->render("admin/account-view.html", get_defined_vars());
         })->conditions(array('id' => '\d+'));
 
         $app->delete("/admin/account/:id", function($id) use($app) {
@@ -66,15 +65,14 @@ return array(
             }
             $output = array("success" => $success,
                             "message" => $message);
-            echo json_encode($output);
-            return ;
+            return json_encode($output);
         })->conditions(array('id' => '\d+'));
 
         $app->get("/admin/account/:id/edit", function($id) use($app) {
             // 后台，用户管理，编辑用户页面
             $action = "edit";
             $queryUser = User::find($id);
-            $app->render("admin/account-view.html", get_defined_vars());
+            return $app->render("admin/account-view.html", get_defined_vars());
         })->conditions(array('id' => '\d+'));
 
         $app->put("/admin/account/:id/edit", function($id) use($app) {
@@ -92,7 +90,7 @@ return array(
                 $success = true;
                 array_push($message, "修改成功");
             }
-            echo json_encode(array("success" => $success, "message" => $message));
+            return json_encode(array("success" => $success, "message" => $message));
         })->conditions(array('id' => '\d+'));
     }
 );
