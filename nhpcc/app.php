@@ -1,39 +1,61 @@
 <?php
 
-require_once(APPROOT . "extensions.php");
-require_once(APPROOT . "hook.php");
+require_once(APPROOT . 'utils.php');
+require_once(APPROOT . 'extensions.php');
+require_once(APPROOT . 'hook.php');
 
-function init_controllers($app){
-    function scan_controller($path, $app){
-        foreach (glob($path) as $filename){
-            if (is_dir($filename)){
-                scan_controller($filename . "/*", $app);
-            } else {
-                if (substr($filename, -3) == 'php'){
-                    $export = require($filename);
-                    $func = $export['export'];
-                    $func($app);
-                }
-            }
-        }
-    }
-    $scan_path = APPROOT . DIRECTORY_SEPARATOR . "controllers/*";
-    scan_controller($scan_path, $app);
-}
-
+// Require all controllers. But some controllers need to be merged or removed
+$controllers = array (
+    'home_app' => require_controller('master/home'),
+    'article_app' => require_controller('articles'),
+    'overview_app' => require_controller('overview'),
+    'projects_app' => require_controller('projects'),
+    'research_app' => require_controller('research'),
+    'achievements_app' => require_controller('achievements'),
+    'download_app' => require_controller('download'),
+    'exchange_app' => require_controller('exchange'),
+    'finding_app' => require_controller('finding'),
+    'foundation_app' => require_controller('foundation'),
+    'rules_app' => require_controller('rules'),
+    'train_app' => require_controller('train'),
+    'user_app' => require_controller('user'),
+    'admin_user_app' => require_controller('master/admin_account'),
+    'admin_article_app' => require_controller('master/admin_article'),
+    'admin_slider_app' => require_controller('master/admin_slider'),
+);
 
 // Create app using factory.
-function create_app($config_filename="custom.php"){
+function create_app ($config_filename='custom.php') {
 
-    $config = require_once(APPROOT . "config/config.php");
-    $custom = require_once(APPROOT . "config/" . $config_filename);
+    global $controllers;
+    extract($controllers);
 
-    $app = new \Slim\Slim();
+    $config = require_once(APPROOT . 'config/config.php');
+    $custom = require_once(APPROOT . 'config/' . $config_filename);
+
+    $app = new Slimx();
+
     $app->config($config);
 
     setup_hooks($app);
     setup_views($app);
-    init_controllers($app);
+
+    $app->register_controller($home_app);
+    $app->register_controller($article_app);
+    $app->register_controller($overview_app);
+    $app->register_controller($projects_app);
+    $app->register_controller($research_app);
+    $app->register_controller($achievements_app);
+    $app->register_controller($download_app);
+    $app->register_controller($exchange_app);
+    $app->register_controller($finding_app);
+    $app->register_controller($foundation_app);
+    $app->register_controller($rules_app);
+    $app->register_controller($train_app);
+    $app->register_controller($user_app);
+    $app->register_controller($admin_user_app);
+    $app->register_controller($admin_article_app);
+    $app->register_controller($admin_slider_app);
 
     return $app;
 }
