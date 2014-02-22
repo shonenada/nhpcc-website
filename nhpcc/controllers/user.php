@@ -1,5 +1,8 @@
 <?php
 
+
+use Model\User;
+
 require_once(APPROOT . "utils.php");
 
 return array(

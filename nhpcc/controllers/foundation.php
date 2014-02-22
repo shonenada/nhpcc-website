@@ -1,5 +1,6 @@
 <?php
 
+use Model\User;
 use Model\Article;
 
 return array(

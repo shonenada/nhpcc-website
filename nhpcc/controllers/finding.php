@@ -1,5 +1,7 @@
 <?php
 
+use Model\Article;
+
 return array(
     "export" => function($app) {
 
