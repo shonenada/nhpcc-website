@@ -21,13 +21,14 @@ function setup_views($app){
     }
 }
 
-function viewAddGlobal($app, $key, $value) {
+function add_global_view_variable($app, $key, $value) {
     $view = $app->view();
     $twigEnv = $view->getEnvironment();
     $twigEnv->addGlobal($key, $value);
 }
 
 function setup_hooks($app){
+    // Hook for RBAC
     $app->hook("slim.before.router", function() use($app){
         $salt = $app->config("salt");
         $uid = $app->getCookie("user_id");
@@ -39,7 +40,7 @@ function setup_hooks($app){
             $user = NULL;
         }
         $app->environment['user'] = $user;
-        viewAddGlobal($app, 'currentUser', $user);
+        add_global_view_variable($app, 'currentUser', $user);
     });
 
     $app->hook("slim.before.dispatch", function() use ($app){

@@ -3,6 +3,7 @@
 require_once(APPROOT . 'utils.php');
 require_once(APPROOT . 'extensions.php');
 
+$config = require_once(APPROOT . 'config/config.php');
 // Require all controllers. But some controllers need to be merged or removed
 $controllers = array (
     'home_app' => require_controller('master/home'),
@@ -28,14 +29,10 @@ function create_app ($config_files=array()) {
     if(!is_array($config_files))
         exit('Config Files are not array.');
 
-    global $controllers;
-    extract($controllers);
-
-    $config = require_once(APPROOT . 'config/config.php');
-
     $app = new Slimx();
-    $app->config($config);
 
+    global $config;
+    $app->config($config);
     foreach($config_files as $cfil){
         $app->config(require_once($cfil));
     }
@@ -43,6 +40,9 @@ function create_app ($config_files=array()) {
     setup_hooks($app);
     setup_views($app);
 
+    // Register all controllers in global variable $controllers
+    global $controllers;
+    extract($controllers);
     $app->register_controller($home_app);
     $app->register_controller($article_app);
     $app->register_controller($overview_app);
