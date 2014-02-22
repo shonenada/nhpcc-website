@@ -26,6 +26,8 @@ $controllers = array (
 
 // Create app using factory.
 function create_app ($config_files=array()) {
+    if(!is_array($config_files))
+        exit('Config Files are not array.');
 
     global $controllers;
     extract($controllers);
@@ -34,10 +36,9 @@ function create_app ($config_files=array()) {
 
     $app = new Slimx();
     $app->config($config);
-    if (isset($config_files)){
-        foreach($config_files as $cfil){
-            $app->config(require_once($cfil));
-        }
+
+    foreach($config_files as $cfil){
+        $app->config(require_once($cfil));
     }
 
     setup_hooks($app);

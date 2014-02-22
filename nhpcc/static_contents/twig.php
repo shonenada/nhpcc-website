@@ -11,4 +11,5 @@ return array('global' =>
         'webDescription' => '国家高性能计算中心深圳分中心',
         'logoTitle' => '国家高性能计算中心深圳分中心',
         'categories' => $categories,
-    ));
+    )
+);
