@@ -53,12 +53,12 @@ class ORMManager {
     static public $entityManager = null;
 
     public static function init() {
-        $db_params = require(APPROOT. 'config/database.php');
+        $db_params = require(APPROOT . 'config/database.conf.php');
 
         $config = new \Doctrine\ORM\Configuration();
         $eventManager = new \Doctrine\Common\EventManager();
 
-        $driver = $config->newDefaultAnnotationDriver(array(APPROOT. "models/"));
+        $driver = $config->newDefaultAnnotationDriver(array(APPROOT . "models/"));
 
         $config->setMetadataDriverImpl($driver);
         $config->setProxyDir(APPROOT. 'cache/');
