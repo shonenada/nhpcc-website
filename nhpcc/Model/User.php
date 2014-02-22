@@ -23,9 +23,10 @@ namespace Model;
 class User extends ModelBase{
 
     const USER_LEVEL = 1;
-    const STUDNET_LEVEL = 3;
-    const TEACHER_LEVEL = 5;
-    const SUPER_USER_LEVE = 9;
+    const UPDERGRADE_LEVEL = 3;
+    const GRADUATE_LEVEL = 5;
+    const TEACHER_LEVEL = 9;
+    const SUPER_USER_LEVE = 11;
     const ADMIN_LEVEL = 15;
     
     /**

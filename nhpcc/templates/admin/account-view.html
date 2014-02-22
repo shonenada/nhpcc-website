@@ -60,9 +60,10 @@ $('#user_edit_form').ajaxForm({
         <li><label>身份：</label>
             <select name="level">
                 <option value="1">普通用户</option>
-                <option value="3" {% if queryUser.level == 3 %}selected="selected"{% endif %}>学生</option>
-                <option value="5" {% if queryUser.level == 5 %}selected="selected"{% endif %}>教师</option>
-                <option value="9" {% if queryUser.level == 9 %}selected="selected"{% endif %}>超级用户</option>
+                <option value="3" {% if queryUser.level == 3 %}selected="selected"{% endif %}>本科生</option>
+                <option value="5" {% if queryUser.level == 5 %}selected="selected"{% endif %}>研究生</option>
+                <option value="9" {% if queryUser.level == 9 %}selected="selected"{% endif %}>教师</option>
+                <option value="11" {% if queryUser.level == 11 %}selected="selected"{% endif %}>超级用户</option>
                 <option value="15" {% if queryUser.level == 15 %}selected="selected"{% endif %}>管理员</option>
             </select>
         </li>

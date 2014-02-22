@@ -1,12 +1,14 @@
 {%- macro getRole(level) -%}
 {% if level >= 15 %}
 管理员
-{% elseif level >= 9 %}
+{% elseif level >= 11 %}
 超级用户
-{% elseif level >= 5 %}
+{% elseif level >= 9 %}
 教师
+{% elseif level >= 5 %}
+研究生
 {% elseif level >= 3 %}
-学生
+本科生
 {% else %}
 普通用户
 {% endif %}

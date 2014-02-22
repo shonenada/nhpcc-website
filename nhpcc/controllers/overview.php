@@ -8,7 +8,7 @@ return array(
         $cat = require(APPROOT. 'static_contents/categories.php');
         $atcle = require(APPROOT. 'static_contents/contents.php');
 
-        $generateStaticContent = function($ap, $category, $subName) use($cat, $atcle){
+        $generateStaticContent = function($app, $category, $subName) use($cat, $atcle){
             $nav = $cat[$category];
             $categories = $nav['sub'];
             $sub = $categories[$subName];
