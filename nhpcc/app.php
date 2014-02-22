@@ -25,17 +25,20 @@ $controllers = array (
 );
 
 // Create app using factory.
-function create_app ($config_filename='custom.php') {
+function create_app ($config_files=array()) {
 
     global $controllers;
     extract($controllers);
 
     $config = require_once(APPROOT . 'config/config.php');
-    $custom = require_once(APPROOT . 'config/' . $config_filename);
 
     $app = new Slimx();
-
     $app->config($config);
+    if (isset($config_files)){
+        foreach($config_files as $cfil){
+            $app->config(require_once($cfil));
+        }
+    }
 
     setup_hooks($app);
     setup_views($app);

@@ -1,6 +1,5 @@
 composer.lock
-
 nhpcc/cache/
-nhpcc/config/database.php
-nhpcc/config/development.php
+database.php
+development.php
 wwwroot/static/components
