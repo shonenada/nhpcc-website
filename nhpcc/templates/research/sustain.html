@@ -44,9 +44,9 @@ $(function(){
         <div class="wrapper">
             <div id="menu_title">{{nav.title}}</div>
             <ul class="menu">
-            {% for l in categories %}
+            {% for name, value in research %}
                 <li class="sub_list">
-                    <a href="{{l.url}}"><span class="menu_list">{{l.title}}</span></a>
+                    <a href="/research/{{ name }}"><span class="menu_list">{{ value.title }}</span></a>
                 </li>
             {% endfor %}
             </ul>
