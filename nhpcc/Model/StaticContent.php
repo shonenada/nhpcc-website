@@ -7,14 +7,9 @@ namespace Model;
 
 class StaticContent {
 
-    const NONE_TEMPLATE = 'NONE';
-    const FULL_TEMPLATE = 'full_static_template';
-    const DOUBLE_COLUMN_TEMPLATE = 'double_column_static_template';
-
     protected $path;
     protected $title;
     protected $content;
-    protected $template;
 
     public function getPath () {
         return $this->path;
@@ -40,18 +35,9 @@ class StaticContent {
         $this->content = $content;
     }
 
-    public function setTemplate ($template) {
-        $this->template = $template;
-    }
-
-    public function getTemplate () {
-        return $this->template;
-    }
-
     public function saveTo ($filepath) {
         $contentToSave = array(
             'title' => $this->title,
-            'template' => $this->template,
             'content' => $this->content,
         );
         $jsonContent = json_encode($contentToSave, JSON_PRETTY_PRINT);
@@ -69,12 +55,10 @@ class StaticContent {
         if ($asArray){
             $this->setTitle($jsonContent['title']);
             $this->setContent($jsonContent['content']);
-            $this->setTemplate($jsonContent['template']);
         }
         else {
             $this->setTitle($jsonContent->title);
             $this->setContent($jsonContent->content);
-            $this->setTemplate($jsonContent->template);
         }
 
     }
