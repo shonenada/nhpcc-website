@@ -83,8 +83,9 @@ return array(
             if ($queryUser == null){
                 array_push($message, "用户不存在");
             } else {
-                $level = $app->request->params("level");
-                $queryUser->setLevel($level);
+                $queryUser->setLevel($app->request->params("level"));
+                $queryUser->setShortIntro($app->request->params('short_intro'));
+                $queryUser->setIntro($app->request->params('intro'));
                 $queryUser->save();
                 $queryUser->flush();
                 $success = true;

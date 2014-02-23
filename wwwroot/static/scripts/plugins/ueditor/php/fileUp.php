@@ -11,8 +11,9 @@
     //上传配置
     $config = array(
         "savePath" => "upload/" , //保存路径
-        "allowFiles" => array( ".exe", ".rar" , ".mp3" , ".jpg" , ".doc" , ".docx" , ".zip" , ".pdf" , ".txt" , ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg", ".ogg", ".mov", ".wmv", ".mp4", ".webm") , //文件允许格式
-        "maxSize" => 10000000, //文件大小限制，单位KB
+        "allowFiles" => array(".jpg", ".doc", ".docx", ".xls") , //文件允许格式
+        // "allowFiles" => array( ".exe", ".rar" , ".mp3" , ".jpg" , ".doc" , ".docx" , ".zip" , ".pdf" , ".txt" , ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg", ".ogg", ".mov", ".wmv", ".mp4", ".webm") , //文件允许格式
+        "maxSize" => 1024, //文件大小限制，单位KB
         "fileNameFormat" => $_POST['fileNameFormat']
     );
     //生成上传实例对象并完成上传

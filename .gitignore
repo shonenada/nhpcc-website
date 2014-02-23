@@ -2,3 +2,5 @@
 composer.lock
 nhpcc/cache/
 wwwroot/static/components
+upload*/
+vendor/
