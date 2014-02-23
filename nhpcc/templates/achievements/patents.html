@@ -29,11 +29,11 @@ $(function(){
 <div id="sub_main">
     <div id="menu_box">
         <div class="wrapper">
-            <div id="menu_title">{{nav.title}}</div>
+            <div id="menu_title">{{ nav.title }}</div>
             <ul class="menu">
-            {% for l in categories %}
+            {% for c in categories %}
                 <li class="sub_list">
-                    <a href="{{l.url}}"><span class="menu_list">{{l.title}}</span></a>
+                    <a href="{{ c.url }}"><span class="menu_list">{{ c.title }}</span></a>
                 </li>
             {% endfor %}
             </ul>
@@ -47,17 +47,12 @@ $(function(){
             <li><a>专利</a></li>
         </ul>
         <div id="content">
-            <div id="content_title"> </div>
+            <div id="content_title">专利</div>
             <div id="content_body">
-                <h1>专利</h1>
                 <ul>
-                    <li>软件名称：最少随机数生成的蛙跳算法系统，完成日期：2013年1月12日，登记号：2013SR123408</li>
-                    <li>软件名称：倒排索引MSIndex系统，完成日期：2012年12月9日，登记号：2013SR047697</li>
-                    <li>软件名称：并行分布式度量空间索引系统，完成日期：2012年10月12日，登记号：2013SR047975</li>
-                    <li>发明名称：一种图像插值处理方法、装置及显示终端 申请日期:2010年09月26日 专利号：ZL 2010 1 0292556.4</li>
-                    <li>发明名称：一种阴影检测的方法、装置及视频图像处理系统 申请日期：2009年12月30日 专利号：ZL 2009 1 0238821.8</li>
-					<li>发明名称：一种散乱点集的拓扑保持拟合方法、装置及图像变换系统 完成日期：2012.07.18 专利号：ZL201010192648.5</li>
-                    <li>发明名称：一种基于控制点无偏变换的图像配准方法及系统  完成日期：2013.01.30 专利号：ZL201110156498.7</li>
+                    {% for one in achievements.patents %}
+                    <li>{{ one }}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

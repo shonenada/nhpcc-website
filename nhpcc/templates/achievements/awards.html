@@ -25,11 +25,11 @@ $(function(){
 <div id="sub_main">
     <div id="menu_box">
         <div class="wrapper">
-            <div id="menu_title">{{nav.title}}</div>
+            <div id="menu_title">{{ nav.title }}</div>
             <ul class="menu">
-            {% for l in categories %}
+            {% for c in categories %}
                 <li class="sub_list">
-                    <a href="{{l.url}}"><span class="menu_list">{{l.title}}</span></a>
+                    <a href="{{ c.url }}"><span class="menu_list">{{ c.title }}</span></a>
                 </li>
             {% endfor %}
             </ul>
@@ -39,8 +39,8 @@ $(function(){
     <div id="content_box">
         <ul id="crumbs">
             <li><a href="/">首页</a></li>
-            <li><a href="{{nav.url}}">{{nav.title}}</a></li>
-            <li><a>{{sub.title}}</a></li>
+            <li><a href="{{nav.url}}">{{ nav.title }}</a></li>
+            <li><a>{{ sub.title }}</a></li>
         </ul>
         <div id="content" class="content-list">
             <div id="content_title">主要成果和奖励</div>
@@ -53,7 +53,7 @@ $(function(){
                         <td>获奖类别名称和等级</td>
                     </tr>
                     {% set i = 1 %}
-                    {% for l in awards %}
+                    {% for l in achievements.awards %}
                     <tr {% if i % 2 == 0 %}class="light-color"{%endif%}>
                         <td>{{l.name}}</td>
                         <td>{{l.time}}</td>
