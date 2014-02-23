@@ -47,8 +47,12 @@
     <div id="layout_main" class="layout_box">
         <div id="layout_left">
             <ul class="block_menu">
+                {%- if currentUser.hasPermission('/profile', 'GET') %}
                 <li><a href="/profile">用户状态</a></li>
+                {%- endif %}
+                {%- if currentUser.hasPermission('/profile/password', 'GET') %}
                 <li><a href="/profile/password">修改密码</a></li>
+                {%- endif %}
                 <li><a href="/">返回首页</a></li>
             </ul>
         </div>

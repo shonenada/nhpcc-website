@@ -49,12 +49,7 @@ $('#user_edit_form').ajaxForm({
         <li><label>用户名：</label><input type="text" value="{{ currentUser.username }}" name="username" /></li>
         <li><label>姓名：</label><input type="text" value="{{ currentUser.name }}" name="name" /></li>
         <li><label>身份：</label>
-            {% if currentUser.level == 3 %}学生
-            {% elseif currentUser.level == 5 %}教师
-            {% elseif currentUser.level == 9 %}超级用户
-            {% elseif currentUser.level == 15 %}管理员
-            {% else %}普通用户
-            {% endif %}
+            {{ tool.getRole(currentUser.level) }}
         </li>
         <li><label>邮箱：</label><input type="text" value="{{ currentUser.email }}" name="email" /></li>
         <li><label>手机号码：</label><input type="text" value="{{ currentUser.phone }}" name="phone" /></li>

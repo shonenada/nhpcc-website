@@ -47,10 +47,18 @@
     <div id="layout_main" class="layout_box">
         <div id="layout_left">
             <ul class="block_menu">
+                {%- if currentUser.hasPermission('/admin/status', 'GET') %}
                 <li><a href="/admin/status">运行状态</a></li>
+                {%- endif %}
+                {%- if currentUser.hasPermission('/admin/account', 'GET') %}
                 <li><a href="/admin/account">用户管理</a></li>
+                {%- endif %}
+                {%- if currentUser.hasPermission('/admin/article', 'GET') %}
                 <li><a href="/admin/article">文章管理</a></li>
+                {%- endif %}
+                {%- if currentUser.hasPermission('/admin/slider', 'GET') %}
                 <li><a href="/admin/slider">幻灯片</a></li>
+                {%- endif %}
             </ul>
         </div>
         <div id="layout_content">
