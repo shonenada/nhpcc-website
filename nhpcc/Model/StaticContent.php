@@ -7,6 +7,7 @@ namespace Model;
 
 class StaticContent {
 
+    const NONE_TEMPLATE = 'NONE';
     const FULL_TEMPLATE = 'full_static_template';
     const DOUBLE_COLUMN_TEMPLATE = 'double_column_static_template';
 
@@ -48,13 +49,20 @@ class StaticContent {
         file_put_contents($filepath, $jsonContent);
     }
 
-    static public function loadFromFile ($filepath) {
+    static public function loadFromFile ($filepath, $asArray=false) {
         $fileContent = file_get_contents($filepath);
-        $jsonContent = json_decode($fileContent);
+        $jsonContent = json_decode($fileContent, $asArray);
         $return = new StaticContent();
-        $return->setTitle($jsonContent->title);
-        $return->setContent($jsonContent->content);
-        $return->setTemplate($jsonContent->template);
+        if ($asArray){
+            $return->setTitle($jsonContent['title']);
+            $return->setContent($jsonContent['content']);
+            $return->setTemplate($jsonContent['template']);    
+        }
+        else {
+            $return->setTitle($jsonContent->title);
+            $return->setContent($jsonContent->content);
+            $return->setTemplate($jsonContent->template);
+        }
         return $return;
     }
 

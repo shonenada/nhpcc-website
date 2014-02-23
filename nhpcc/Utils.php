@@ -13,8 +13,8 @@ class Utils {
         return require_once (APPROOT . "controllers/{$controller_name}.php");
     }
 
-    static public function loadStaticContent ($module) {
-        $return = StaticContent::loadFromFile(APPROOT . 'static_contents/' . str_replace('.', '/', $module) . '.json');
+    static public function loadStaticContent ($module, $asArray=false) {
+        $return = StaticContent::loadFromFile(APPROOT . 'static_contents/' . str_replace('.', '/', $module) . '.json', $asArray);
         return $return;
     }
 
