@@ -1,8 +1,9 @@
 <?php
 
-use Model\User;
-use Model\Article;
-use Model\Slider;
+use \Utils;
+use \Model\User;
+use \Model\Article;
+use \Model\Slider;
 
 return array(
     "export" => function($app) {
@@ -11,7 +12,7 @@ return array(
             $news = Article::getSpecList(Article::getCat("INDEX_NEWS"), 1, 7);
             $notice = Article::getSpecList(Article::getCat("INDEX_ANNOUNCE"), 1, 11);
             $activity = Article::getSpecList(Article::getCat("INDEX_ACTIVATY"), 1, 11);
-            $static_content = require(APPROOT. 'static_contents/contents.php');
+            $static_content = Utils::loadStaticContent('contents', true)->getContent();
             $links = require(APPROOT. 'static_contents/links.php');
             $academician_intro = $static_content['index_intro'];
             $main_links = $links['main'];
