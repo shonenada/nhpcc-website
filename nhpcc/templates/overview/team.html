@@ -1,18 +1,14 @@
 {% extends "sub.html" %}
 {% block htmlhead %}
 <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/sub.css') }}" />
-<script>
-$(function(){
-    path = window.location.pathname;
-    $(".sub_list").each(function(){
-        var href = $(this).find('a').attr("href");
-        if (href == path){
-            $(this).addClass("selected");
-        }
-    })
-});
-</script>
 <style>
+#content_box {
+    width: 100%;
+    padding: 10px 0px;
+}
+#content_title {
+    margin: 5px 0px;
+}
 .member-avatar{
     float: left;
     width: 130px;
@@ -48,13 +44,8 @@ $(function(){
     </div>
 
     <div id="content_box">
-        <ul id="crumbs">
-            <li><a href="/">首页</a></li>
-            <li><a href="{{nav.url}}">{{nav.title}}</a></li>
-            <li><a href="{{sub.url}}">{{sub.title}}</a></li>
-        </ul>
         <div id="content">
-            <div id="content_title">{{ article.title }}</div>
+            <div id="content_title">{{ static.title }}</div>
             <div id="content_body">
                 {% for t in team %}
                     <div class="member-box">
