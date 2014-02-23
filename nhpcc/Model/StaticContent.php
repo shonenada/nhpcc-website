@@ -62,7 +62,7 @@ class StaticContent {
         return $this->saveTo($this->path);
     }
 
-    public function loadFrom ($filepath, $asArray=false) {
+    public function loadFrom ($filepath, $asArray=true) {
         $jsonContent = self::loadJson($filepath, $asArray);
         $this->setPath($filepath);
 
@@ -79,7 +79,7 @@ class StaticContent {
 
     }
 
-    public function load ($asArray=false) {
+    public function load ($asArray=true) {
         $this->loadFrom($this->path, $asArray);
     }
 
@@ -97,7 +97,7 @@ class StaticContent {
         return $jsonContent;
     }
 
-    static public function loadFromFile ($filepath, $asArray=false) {
+    static public function loadFromFile ($filepath, $asArray=true) {
         $clsName = get_called_class();
         $return = new $clsName();
         $return->loadFrom($filepath, $asArray);

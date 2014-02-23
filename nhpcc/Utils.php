@@ -11,7 +11,7 @@ class Utils {
         return require_once (APPROOT . "controllers/{$controller_name}.php");
     }
 
-    static public function loadStaticContent ($module, $asArray=false) {
+    static public function loadStaticContent ($module, $asArray=true) {
         $cls = '\Model\StaticContent';
 
         $moduleMapping = array(
