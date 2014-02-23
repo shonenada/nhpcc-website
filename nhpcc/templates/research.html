@@ -13,6 +13,9 @@ $(function(){
 });
 </script>
 <style>
+#content_title{
+    font-size: 24px;
+}
 #menu_box{
     width: 280px;
 }
@@ -44,7 +47,7 @@ $(function(){
         <div class="wrapper">
             <div id="menu_title">{{nav.title}}</div>
             <ul class="menu">
-             {% for name, value in research %}
+            {% for name, value in research %}
                 <li class="sub_list">
                     <a href="/research/{{ name }}"><span class="menu_list">{{ value.title }}</span></a>
                 </li>
@@ -57,22 +60,12 @@ $(function(){
         <ul id="crumbs">
             <li><a href="/">首页</a></li>
             <li><a>{{ nav.title }}</a></li>
-            <li><a>普及型高性能计算机体系结构</a></li>
+            <li><a>{{ article.title }}</a></li>
         </ul>
         <div id="content">
-            <div id="content_title"> </div>
+            <div id="content_title">{{ article.title }}</div>
             <div id="content_body">
-                <h1>普及型高性能计算安全防护</h1>
-
-                <p>本方向研究团队有教授4人,副教授5人,具有博士学位者10人。</p>
-                <p>本方向重点研究国产普及型高性能计算机的高度安全性和自主可控性,以保障其在重点敏感领域的适用性,主要研究内容包括：</p>
-                <ul>
-                    <li>基于软硬件一体化的安全体系架构研究</li>
-                    <li>基于国产CPU和密码芯片的可信计算研究</li>
-                    <li>基于同态密码和签名的安全计算研究</li>
-                    <li>基于感知哈希的视频篡改检测与定位</li>
-                </ul>
-                <p>本本方向针对各新兴网络业务中的安全性、可靠性问题,综合运用各种智能信息处理技术开展研究,成果既有源头创新又有实际应用价值。近五年承担国家级、省部级项目20余项,科研经费2000余万元,研究成果为政府、国防军事等重要信息系统的安全可靠运行提供技术保障,完成国际标准、国家标准、国军标、地方标准及行业标准10佘项,获得全军和省级的科技奖励4项。</p>
+                {{ article.content | raw }}
             </div>
         </div>
     </div>

@@ -12,21 +12,11 @@ return array(
             return $app->redirect("/research/system");
         });
 
-        $app->get("/research/system", function() use ($app, $cat, $research) {
+        $app->get('/research/:type', function ($type) use ($app, $cat, $research) {
             $nav = $cat['research'];
-            return $app->render("research/system.html", get_defined_vars());
-        });
-        $app->get("/research/theory", function() use ($app, $cat, $research) {
-            $nav = $cat['research'];
-            return $app->render("research/theory.html", get_defined_vars());
-        });
-        $app->get("/research/security", function() use ($app, $cat, $research) {
-            $nav = $cat['research'];
-            return $app->render("research/security.html", get_defined_vars());
-        });
-        $app->get("/research/sustain", function() use ($app, $cat, $research) {
-            $nav = $cat['research'];
-            return $app->render("research/sustain.html", get_defined_vars());
-        });
+            $article = $research[$type];
+            return $app->render('research.html', get_defined_vars());
+        })->conditions(array('type' => 'system|theory|security|sustain'));
+
     }
 );
