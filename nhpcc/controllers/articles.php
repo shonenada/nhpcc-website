@@ -3,8 +3,6 @@
 use Model\User;
 use Model\Article;
 
-require_once(APPROOT . "utils.php");
-
 return array(
     "export" => function($app) {
         $app->get("/article/:id", function($id) use($app) {

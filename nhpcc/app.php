@@ -1,28 +1,30 @@
 <?php
 
-require_once(APPROOT . 'utils.php');
+use \Utils;
+
 require_once(APPROOT . 'extensions.php');
 
 $config = require_once(APPROOT . 'config/config.php');
 
 // Require all controllers. But some controllers need to be merged or removed
 $controllers = array (
-    'home_app' => require_controller('master/home'),
-    'article_app' => require_controller('articles'),
-    'overview_app' => require_controller('overview'),
-    'projects_app' => require_controller('projects'),
-    'research_app' => require_controller('research'),
-    'achievements_app' => require_controller('achievements'),
-    'download_app' => require_controller('download'),
-    'exchange_app' => require_controller('exchange'),
-    'finding_app' => require_controller('finding'),
-    'foundation_app' => require_controller('foundation'),
-    'rules_app' => require_controller('rules'),
-    'train_app' => require_controller('train'),
-    'user_app' => require_controller('user'),
-    'admin_user_app' => require_controller('master/admin_account'),
-    'admin_article_app' => require_controller('master/admin_article'),
-    'admin_slider_app' => require_controller('master/admin_slider'),
+    'home_app' => Utils::require_controller('master/home'),
+    'article_app' => Utils::require_controller('articles'),
+    'overview_app' => Utils::require_controller('overview'),
+    'projects_app' => Utils::require_controller('projects'),
+    'research_app' => Utils::require_controller('research'),
+    'achievements_app' => Utils::require_controller('achievements'),
+    'download_app' => Utils::require_controller('download'),
+    'exchange_app' => Utils::require_controller('exchange'),
+    'finding_app' => Utils::require_controller('finding'),
+    'foundation_app' => Utils::require_controller('foundation'),
+    'rules_app' => Utils::require_controller('rules'),
+    'train_app' => Utils::require_controller('train'),
+    'user_app' => Utils::require_controller('user'),
+    'admin_user_app' => Utils::require_controller('master/admin_account'),
+    'admin_article_app' => Utils::require_controller('master/admin_article'),
+    'admin_slider_app' => Utils::require_controller('master/admin_slider'),
+    'admin_static_app' => Utils::require_controller('master/admin_static'),
 );
 
 // Create app using factory.
@@ -61,6 +63,7 @@ function create_app ($config_files=array()) {
     $app->register_controller($admin_user_app);
     $app->register_controller($admin_article_app);
     $app->register_controller($admin_slider_app);
+    $app->register_controller($admin_static_app);
 
     return $app;
 }

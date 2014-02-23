@@ -1,9 +1,6 @@
 <?php
 
-
-use Model\User;
-
-require_once(APPROOT . 'utils.php');
+use \Model\User;
 
 return array(
     'export' => function($app) {
@@ -60,7 +57,7 @@ return array(
                 $queryUser->setLastLogin($now);
                 $queryUser->save();
                 $queryUser->flush();
-                $token = generateToken($ip, $now, $salt);
+                $token = Utils::generateToken($ip, $now, $salt);
                 $app->setEncryptedCookie('user_id', $uid);
                 $app->setEncryptedCookie('token', $token);
                 $output = array('success' => true,
