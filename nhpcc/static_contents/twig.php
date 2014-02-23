@@ -3,7 +3,7 @@
 use \Utils;
 // Define global variables for view
 
-$categories = Utils::loadStaticContent('categories', true)->getContent();
+$categories = Utils::loadStaticContent('category', true)->getContent();
 
 return array('global' =>
     array(

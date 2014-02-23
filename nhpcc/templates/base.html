@@ -10,11 +10,11 @@
     <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/components/reset-css/index.css') }}" />
     <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/base.css') }}" />
     <link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/message_box.css') }}" />
-    <script src="{{siteUrl('static/components/jquery/jquery.min.js')}}" language="javascript" type="text/javascript"></script>
-    <script src="{{siteUrl('static/scripts/jquery.tools.min.js')}}" language="javascript" type="text/javascript"></script>
-    <script src="{{siteUrl('static/scripts/jquery.form.js')}}" language="javascript" type="text/javascript"></script>
-    <script src="{{siteUrl('static/scripts/global.js')}}" language="javascript" type="text/javascript"></script>
-    <script src="{{siteUrl('static/scripts/account.js')}}" language="javascript" type="text/javascript"></script>
+    <script src="{{ siteUrl('static/components/jquery/jquery.min.js') }}" language="javascript" type="text/javascript"></script>
+    <script src="{{ siteUrl('static/scripts/jquery.tools.min.js') }}" language="javascript" type="text/javascript"></script>
+    <script src="{{ siteUrl('static/scripts/jquery.form.js') }}" language="javascript" type="text/javascript"></script>
+    <script src="{{ siteUrl('static/scripts/global.js') }}" language="javascript" type="text/javascript"></script>
+    <script src="{{ siteUrl('static/scripts/account.js') }}" language="javascript" type="text/javascript"></script>
     {% block htmlhead %}
     {% endblock %}
 </head>
@@ -28,10 +28,15 @@
         <div id="header_link">
             <ul class="top-link">
                 <li class="first">{% if currentUser %}{{ currentUser.username }}，您好</li>
+
                 {%- if currentUser.hasPermission('/profile', 'GET') %}
                 <li><a href="/profile">个人信息</a></li>
                 {%- endif %}
-                {%- if currentUser.hasPermission('/admin', 'GET') %}<li><a href="/admin">后台管理</a></li>{% endif %}
+
+                {%- if currentUser.hasPermission('/admin', 'GET') %}
+                <li><a href="/admin">后台管理</a></li>
+                {%- endif %}
+
                 <li><a id="logout-btn" class="logout-btn" href="#logout">退出</a>{% else %}<a href="/login">登录</a>{% endif %}</li>
             </ul>
         </div>
@@ -44,24 +49,24 @@
     </div>
     <div id="menu">
         <ul id='nav'>
-            {% for name, item in global.categories %}
+            {%- for name, item in global.categories %}
             <li>
                 <a href="{{ item.url }}" {%- if item.id %}id="{{ item.id }}"{%- endif %} alt="{{ item.title }}">{{ item.title }}</a>
-                {% if item.sub %}
+                {%- if item.sub %}
                 <ul>
-                {% for sub in item.sub %}
-                    <li><a href="{{sub.url}}" alt="{{sub.title}}">{{sub.title}}</a></li>
-                {% endfor %}
+                {%- for sub in item.sub %}
+                    <li><a href="{{ sub.url }}" alt="{{ sub.title }}">{{ sub.title }}</a></li>
+                {%- endfor %}
                 </ul>
-                {% endif %}
+                {%- endif %}
             </li>
-            {% endfor %}
+            {%- endfor %}
         </ul>
     </div>
-    {% block banner %}
-    {% endblock %}
+    {%- block banner %}
+    {%- endblock %}
 </div>
-{% endblock %}
+{%- endblock %}
 
 {% block main %}
 {% endblock %}
