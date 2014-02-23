@@ -56,6 +56,9 @@
                 {%- if currentUser.hasPermission('/admin/article', 'GET') %}
                 <li><a href="/admin/article">文章管理</a></li>
                 {%- endif %}
+                {%- if currentUser.hasPermission('/admin/static', 'GET') %}
+                <li><a href="/admin/static">内容管理</a></li>
+                {%- endif %}
                 {%- if currentUser.hasPermission('/admin/slider', 'GET') %}
                 <li><a href="/admin/slider">幻灯片</a></li>
                 {%- endif %}

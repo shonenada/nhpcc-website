@@ -61,8 +61,7 @@ $('#user_edit_form').ajaxForm({
             </span>
         </li>
     {% elseif action == 'edit' %}
-        <li><label>用户名：</label>{{ queryUser.username }}</script>
-        </li>
+        <li><label>用户名：</label>{{ queryUser.username }}</li>
         <li><label>姓名：</label> {{ queryUser.name }}</li>
         <li><label>身份：</label>
             <select name="level">

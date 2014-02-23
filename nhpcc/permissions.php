@@ -106,6 +106,10 @@ return array(
         array($administrator, "/admin/article/\d+?/edit", "GET"),
         array($administrator, "/admin/article/\d+?/edit", "PUT"),
 
+        array($administrator, "/admin/static", "GET"),
+        array($administrator, "/admin/static/\S+?", "GET"),
+        array($administrator, "/admin/static/\S+?/edit", "PUT"),
+        
     ),
     "deny" => array(
     )
