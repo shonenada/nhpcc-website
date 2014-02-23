@@ -1,8 +1,9 @@
 <?php
 
+use \Utils;
 // Define global variables for view
 
-$categories = require(APPROOT. "static_contents/categories.php");
+$categories = Utils::loadStaticContent('categories', true)->getContent();
 
 return array('global' =>
     array(

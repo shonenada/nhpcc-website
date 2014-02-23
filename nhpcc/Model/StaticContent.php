@@ -11,9 +11,18 @@ class StaticContent {
     const FULL_TEMPLATE = 'full_static_template';
     const DOUBLE_COLUMN_TEMPLATE = 'double_column_static_template';
 
+    private $path;
     private $title;
     private $content;
     private $template;
+
+    public function getPath () {
+        return $this->path;
+    }
+
+    public function setPath ($path) {
+        $this->path = $path;
+    }
 
     public function getTitle () {
         return $this->title;
@@ -49,14 +58,28 @@ class StaticContent {
         file_put_contents($filepath, $jsonContent);
     }
 
+    public function save () {
+        return $this->saveTo($this->path);
+    }
+
+    public function load ($asArray=false) {
+        $return = $this->loadFromFile($this->path, $asArray);
+        $this->setPath($return->getPath());
+        $this->setTitle($return->getTitle());
+        $this->setTemplate($return->getTemplate());
+        $this->setContent($return->getContent());
+    }
+
     static public function loadFromFile ($filepath, $asArray=false) {
         $fileContent = file_get_contents($filepath);
         $jsonContent = json_decode($fileContent, $asArray);
-        $return = new StaticContent();
+        $cls = get_called_class();
+        $return = new $cls();
+        $return->setPath($filepath);
         if ($asArray){
             $return->setTitle($jsonContent['title']);
             $return->setContent($jsonContent['content']);
-            $return->setTemplate($jsonContent['template']);    
+            $return->setTemplate($jsonContent['template']);
         }
         else {
             $return->setTitle($jsonContent->title);
@@ -64,6 +87,10 @@ class StaticContent {
             $return->setTemplate($jsonContent->template);
         }
         return $return;
+    }
+
+    public function html () {
+        return $this->getContent();
     }
 
 }
