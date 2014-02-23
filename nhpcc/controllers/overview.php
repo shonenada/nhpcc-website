@@ -12,13 +12,13 @@ return array(
 
         $app->get('/overview/introduction', function () use ($app) {
             $static = Utils::loadStaticContent('overview.introduction');
-            return $app->render("{$static->getTemplate()}.html", get_defined_vars());
+            return $app->render("full_static_template.html", get_defined_vars());
         });
 
         $app->get('/overview/team', function() use ($app) {
             $static = Utils::loadStaticContent('overview.team');
             $team = User::getTeamList();
-            return $app->render("{$static->getTemplate()}.html", get_defined_vars());
+            return $app->render("overview/team.html", get_defined_vars());
         });
 
         $app->get('/overview/team/:id', function($id) use ($app) {
