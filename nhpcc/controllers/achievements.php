@@ -1,11 +1,12 @@
 <?php
 
-use Model\Article;
+use \Utils;
+use \Model\Article;
 
 return array(
     "export" => function($app) {
 
-        $cat = require(APPROOT. 'static_contents/categories.php');
+        $cat = Utils::loadStaticContent('categories')->getContent();
         $achievements = require(APPROOT. 'static_contents/achievements.php');
 
         $app->get("/achievements", function() use($app, $cat) {

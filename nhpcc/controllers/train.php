@@ -1,11 +1,12 @@
 <?php
 
-use Model\Article;
+use \Utils;
+use \Model\Article;
 
 return array(
     "export" => function($app) {
 
-        $cat = require(APPROOT. 'static_contents/categories.php');
+        $cat = Utils::loadStaticContent('categories')->getContent();
         $train = require(APPROOT. 'static_contents/train.php');
 
         $app->get("/train", function() use($app, $cat) {

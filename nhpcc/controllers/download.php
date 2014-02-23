@@ -1,9 +1,11 @@
 <?php
 
+use \Utils;
+
 return array(
     "export" => function($app) {
 
-        $cat = require(APPROOT. 'static_contents/categories.php');
+        $cat = Utils::loadStaticContent('categories')->getContent();
 
         $app->get("/download", function() use($app, $cat) {
             $nav = $cat['download'];

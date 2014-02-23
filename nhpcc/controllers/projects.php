@@ -1,9 +1,11 @@
 <?php
 
+use \Utils;
+
 return array(
     "export" => function($app) {
 
-        $cat = require(APPROOT. 'static_contents/categories.php');
+        $cat = Utils::loadStaticContent('categories')->getContent();
         $projects = require(APPROOT. 'static_contents/projects.php');
 
         $app->get("/projects", function() use($app, $cat, $projects) {

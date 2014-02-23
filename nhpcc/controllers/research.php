@@ -1,9 +1,11 @@
 <?php
 
+use \Utils;
+
 return array(
     "export" => function($app) {
 
-        $cat = require(APPROOT. 'static_contents/categories.php');
+        $cat = Utils::loadStaticContent('categories')->getContent();
 
         $categories = array(
             "system" => array('title' => '普及型高性能计算机体系结构', 'url' => "/research/system"),

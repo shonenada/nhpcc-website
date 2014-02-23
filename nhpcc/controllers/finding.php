@@ -1,11 +1,12 @@
 <?php
 
-use Model\Article;
+use \Utils;
+use \Model\Article;
 
 return array(
     "export" => function($app) {
 
-        $cat = require(APPROOT. 'static_contents/categories.php');
+        $cat = Utils::loadStaticContent('categories')->getContent();
 
         $app->get("/finding", function() use($app, $cat) {
             $nav = $cat['finding'];

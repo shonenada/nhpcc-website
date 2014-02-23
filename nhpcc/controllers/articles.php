@@ -1,7 +1,7 @@
 <?php
 
-use Model\User;
-use Model\Article;
+use \Model\User;
+use \Model\Article;
 
 return array(
     "export" => function($app) {
