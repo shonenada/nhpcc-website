@@ -6,7 +6,7 @@ use \Model\Article;
 return array(
     "export" => function($app) {
 
-        $cat = Utils::loadStaticContent('categories')->getContent();
+        $cat = Utils::loadStaticContent('category')->getContent();
 
         $app->get("/finding", function() use($app, $cat) {
             $nav = $cat['finding'];

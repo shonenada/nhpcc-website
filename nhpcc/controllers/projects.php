@@ -5,7 +5,7 @@ use \Utils;
 return array(
     "export" => function($app) {
 
-        $cat = Utils::loadStaticContent('categories')->getContent();
+        $cat = Utils::loadStaticContent('category')->getContent();
         $projects = require(APPROOT. 'static_contents/projects.php');
 
         $app->get("/projects", function() use($app, $cat, $projects) {

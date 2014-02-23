@@ -5,7 +5,7 @@ use \Utils;
 return array(
     "export" => function($app) {
 
-        $cat = Utils::loadStaticContent('categories', true)->getContent();
+        $cat = Utils::loadStaticContent('category', true)->getContent();
         $research = Utils::loadStaticContent('research', true)->getContent();
 
         $app->get("/research", function() use ($app, $cat) {

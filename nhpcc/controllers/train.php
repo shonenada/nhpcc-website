@@ -6,7 +6,7 @@ use \Model\Article;
 return array(
     "export" => function($app) {
 
-        $cat = Utils::loadStaticContent('categories')->getContent();
+        $cat = Utils::loadStaticContent('category')->getContent();
         $train = require(APPROOT. 'static_contents/train.php');
 
         $app->get("/train", function() use($app, $cat) {

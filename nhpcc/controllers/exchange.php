@@ -7,7 +7,7 @@ use \Model\Article;
 return array(
     "export" => function($app) {
 
-        $cat = Utils::loadStaticContent('categories')->getContent();
+        $cat = Utils::loadStaticContent('category')->getContent();
 
         $app->get("/exchange", function() use($app, $cat) {
             $nav = $cat['exchange'];

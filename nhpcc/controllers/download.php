@@ -5,7 +5,7 @@ use \Utils;
 return array(
     "export" => function($app) {
 
-        $cat = Utils::loadStaticContent('categories')->getContent();
+        $cat = Utils::loadStaticContent('category')->getContent();
 
         $app->get("/download", function() use($app, $cat) {
             $nav = $cat['download'];
