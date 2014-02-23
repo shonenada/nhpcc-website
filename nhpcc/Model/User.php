@@ -1,6 +1,7 @@
 <?php
 
 namespace Model;
+use \RBAC\Authentication;
 
 /** 
  * @Entity 
@@ -91,100 +92,107 @@ class User extends ModelBase{
      **/
     private $level;
 
-    public function getId() {
+    public function getId () {
         return $this->id;
     }
 
-    public function getUsername() {
+    public function getUsername () {
         return $this->username;
     }
 
-    public function setUsername($username) {
+    public function setUsername ($username) {
         $this->username = $username;
     }
 
-    public function setPassword($raw, $salt) {
+    public function setPassword ($raw, $salt) {
         $hashPassword = User::hashPassword($raw, $salt);
         $this->password = $hashPassword;
     }
 
-    public function checkPassword($raw, $salt) {
+    public function checkPassword ($raw, $salt) {
         return ($this->password == self::hashPassword($raw, $salt));
     }
 
-    public function getName() {
+    public function getName () {
         return $this->name;
     }
 
-    public function setName($name) {
+    public function setName ($name) {
         $this->name = $name;
     }
 
-    public function getEmail() {
+    public function getEmail () {
         return $this->email;
     }
 
-    public function setEmail($email) {
+    public function setEmail ($email) {
         $this->email = $email;
     }
 
-    public function getPhone() {
+    public function getPhone () {
         return $this->phone;
     }
 
-    public function setPhone($phone) {
+    public function setPhone ($phone) {
         $this->phone = $phone;
     }
 
-    public function getCreated() {
+    public function getCreated () {
         return $this->created;
     }
 
-    public function getLastLogin() {
+    public function getLastLogin () {
         return $this->lastLogin;
     }
 
-    public function setLastLogin($ll) {
+    public function setLastLogin ($ll) {
         $this->lastLogin = $ll;
     }
 
-    public function getIP() {
+    public function getIP () {
         return $this->ip;
     }
 
-    public function setIP($ip) {
+    public function setIP ($ip) {
         $this->ip = $ip;
     }
 
-    public function getShortIntro() {
+    public function getShortIntro () {
         return $this->shortIntro;
     }
 
-    public function setShortIntro($si) {
+    public function setShortIntro ($si) {
         $this->shortIntro = $si;
     }
 
-    public function getIntro() {
+    public function getIntro () {
         return $this->intro;
     }
 
-    public function setIntro($intro){
+    public function setIntro ($intro){
         $this->intro = $intro;
     }
 
-    public function getLevel() {
+    public function getLevel () {
         return $this->level;
     }
 
-    public function setLevel($level) {
+    public function setLevel ($level) {
         $this->level = $level;
     }
 
-    public function __construct($username) {
+    public function __construct ($username) {
         $this->username = $username;
     }
 
-    static public function validateToken($user, $token, $salt) {
+    public function hasPermission ($resource, $method) {
+        $ptable = require(APPROOT . "permissions.php");
+        $auth = new Authentication();
+        $auth->load($ptable);
+        return $auth->accessiable($this, $resource, $method);
+    }
+
+    static public function validateToken ($user, $token, $salt) {
         $ip = $user->getIP();
         $lastLogin = $user->getLastLogin()->format('Y-m-d H:i:s');
         $hash = md5($lastLogin . "{" . $salt . "}" . $ip);
@@ -195,12 +203,12 @@ class User extends ModelBase{
         }
     }
 
-    static public function hashPassword($password, $salt) {
+    static public function hashPassword ($password, $salt) {
         $hash = md5("{$salt}{$password}{$salt}");
         return $hash;
     }
 
-    static public function getList($page=1, $pagesize=20, $asc=false) {
+    static public function getList ($page=1, $pagesize=20, $asc=false) {
         $dql = sprintf(
             'SELECT n FROM %s n WHERE n.level > 0'.
             'ORDER BY n.id %s',
@@ -211,11 +219,11 @@ class User extends ModelBase{
         return $query->useQueryCache(false)->getResult();
     }
 
-    static public function findByUsername($username) {
+    static public function findByUsername ($username) {
         return static::query()->findBy(array('username' => $username));
     }
 
-    static public function getTeamList() {
+    static public function getTeamList () {
         $dql = sprintf(
             'SELECT n FROM %s n WHERE n.level = %d or n.level = %d'.
             'ORDER BY n.created ASC',
