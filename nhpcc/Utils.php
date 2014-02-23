@@ -1,7 +1,5 @@
 <?php
 
-use \Model\StaticContent;
-
 class Utils {
 
     static public function generateToken($ip, $now, $salt){
@@ -14,7 +12,17 @@ class Utils {
     }
 
     static public function loadStaticContent ($module, $asArray=false) {
-        $return = StaticContent::loadFromFile(APPROOT . 'static_contents/' . str_replace('.', '/', $module) . '.json', $asArray);
+        $cls = '\Model\StaticContent';
+
+        $moduleMapping = array(
+            'research' => '\Model\ResearchStaticContent',
+        );
+
+        if (in_array($module, array_keys($moduleMapping))){
+            $cls = $moduleMapping[$module];
+        }
+
+        $return = $cls::loadFromFile(APPROOT . 'static_contents/' . str_replace('.', '/', $module) . '.json', $asArray);
         return $return;
     }
 
