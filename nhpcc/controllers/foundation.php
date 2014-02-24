@@ -9,7 +9,7 @@ return array(
 
         $cat = Utils::loadStaticContent('category')->getContent();
 
-        $app->get("/foundation", function() use($app, $cat) {
+        $app->get("/foundation", function () use ($app, $cat) {
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $manage = Article::getSpecList(Article::getCat("FOUNDATION_MANAGE"), 1, 10);
@@ -19,7 +19,7 @@ return array(
             return $app->render("sub-index.html", get_defined_vars());
         });
 
-        $app->get("/foundation/manage", function() use($app, $cat) {
+        $app->get("/foundation/manage", function () use ($app, $cat) {
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $sub = $categories['manage'];
@@ -27,7 +27,7 @@ return array(
             return $app->render("sub-index.html", get_defined_vars());
         });
 
-        $app->get("/foundation/guide", function() use($app, $cat) {
+        $app->get("/foundation/guide", function () use ($app, $cat) {
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $sub = $categories['guide'];
@@ -35,7 +35,7 @@ return array(
             return $app->render("sub-index.html", get_defined_vars());
         });
 
-        $app->get("/foundation/list", function() use($app, $cat) {
+        $app->get("/foundation/list", function () use ($app, $cat) {
             $nav = $cat['foundation'];
             $categories = $nav['sub'];
             $sub = $categories['list'];

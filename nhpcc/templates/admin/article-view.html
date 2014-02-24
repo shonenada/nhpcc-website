@@ -93,6 +93,8 @@ $('#article_edit_form').ajaxForm({
 </form>
 </div>
 
-<script type="text/javascript" charset="utf-8" src="{{siteUrl('/static/scripts/ueditor.js')}}"></script>
+<script>
+    UE.getEditor('editor');
+</script>
 
 {% endblock %}

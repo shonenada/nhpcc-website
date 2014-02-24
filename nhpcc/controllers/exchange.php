@@ -13,7 +13,7 @@ return array(
             $nav = $cat['exchange'];
             $categories = $nav['sub'];
             $arts = Article::getSpecList(Article::getCat("INDEX_ACTIVATY"), 1, 50);
-            return $app->render("sub-index.html", get_defined_vars());
+            return $app->render("full-sub-index.html", get_defined_vars());
         });
 
         $app->get("/exchange/:id", function($id) use($app, $cat) {
@@ -25,7 +25,7 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            return $app->render("sub.html", get_defined_vars());
+            return $app->render("full-sub.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
     }

@@ -9,10 +9,10 @@ return array(
 
         $cat = Utils::loadStaticContent('category')->getContent();
 
-        $app->get("/rules", function() use($app, $cat) {
+        $app->get("/rules", function () use ($app, $cat) {
             $nav = $cat['rules'];
             $arts = Article::getSpecList(Article::getCat("RULES_RULES"), 1, 50);
-            return $app->render("sub-index.html", get_defined_vars());
+            return $app->render("full-sub-index.html", get_defined_vars());
         });
 
         $app->get("/rules/:id", function($id) use($app, $cat) {
@@ -23,7 +23,7 @@ return array(
             $article->save();
             $article->flush();
             $article->setAuthor(User::find($article->getAuthor()));
-            return $app->render("sub.html", get_defined_vars());
+            return $app->render("full-sub.html", get_defined_vars());
         })->conditions(array("id" => "\d+"));
 
     }

@@ -47,7 +47,10 @@ function setup_hooks ($app) {
         $user = $app->environment['user'];
         $resource = $app->request->getPath();
         $method = $app->request->getMethod();
-        if (!$user->hasPermission($resource, $method)) {
+        $ptable = require(APPROOT . "permissions.php");
+        $auth = new Authentication();
+        $auth->load($ptable);
+        if (!$auth->accessiable($user, $resource, $method)) {
             $app->halt(403, "You have no permission!");
         }
     });

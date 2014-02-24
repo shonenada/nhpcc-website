@@ -55,6 +55,9 @@ class Article extends ModelBase {
         'FINDING' => array('招纳贤才', array(
             'FINDING' => array(71, '招纳贤才'),
             )),
+        'DOWNLOAD' => array('下载中心', array(
+            'DOWNLOAD' => array(81, '下载中心'),
+            )),
         );
 
     /**

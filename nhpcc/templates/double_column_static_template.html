@@ -1,0 +1,74 @@
+{% extends "sub.html" %}
+{% block htmlhead %}
+<link type="text/css" rel="stylesheet" media="screen" href="{{ siteUrl('static/styles/sub.css') }}" />
+<script>
+$(function(){
+    path = window.location.pathname;
+    $(".sub_list").each(function(){
+        var href = $(this).find('a').attr("href");
+        if (href == path){
+            $(this).addClass("selected");
+        }
+    })
+});
+</script>
+<style>
+#content_body h1{
+    font-size: 28px;
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+}
+#content_body ul{
+    list-style: none;
+    margin-left: 60px;
+}
+</style>
+{% endblock %}
+{% block main %}
+<div id="sub_main">
+    <div id="menu_box">
+        <div class="wrapper">
+            <div id="menu_title">{{nav.title}}</div>
+            <ul class="menu">
+            {% for l in categories %}
+                <li class="sub_list">
+                    <a href="{{l.url}}"><span class="menu_list">{{l.title}}</span></a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="content_box">
+        <ul id="crumbs">
+            <li><a href="/">首页</a></li>
+            <li><a>{{ nav.title }}</a></li>
+            <li><a>论文</a></li>
+        </ul>
+        <div id="content">
+            <div id="content_title"> </div>
+            <div id="content_body">
+                <h1>论文</h1>
+                <ul>
+                    <li>[1]Chen GL, Sun GZ, Zhang YQ, Mo ZY .Study on Parallel Computing. Journal of Computer Science and Technology, 2006, 21(5):665-673.</li>
+                    <li>[2]Zhang YQ, Chen GL, Sun GZ, Miao QK. Models of Parallel Computation: A survey and Classification. Frontiers of Computer science in China, 2007, 1(2):156-165.</li>
+                    <li>[3]Zhang D, Liu YH, Guo XN, Ni LM.RASS: A Real-time, Accurate and Scalable System for Tracking Transceiver-free 0bjects. IEEE Transactions on Parallel and Distributed Systems, 2012.</li>
+                    <li>[4]Zhang D, Liu YH, Guo XN, Ni LM. On Distinguishing the Multiple Radio Paths in RSS-based Ranging. Proc. of the 31th Annual IEEE Int’l Conf. on computer Communications (InfoCom), 2012.</li>
+                    <li>[5]Zhang D, Liu YH, NiLM. Link-Centric Probabilistic Coverage Model for Transceiver-free0bject Detection in Wireless Networks. Proc. of the 30th Int’l Conf. on Distributed Computing Systems(ICDCs), 2010:116-125.</li>
+                    <li>[6]Zhang D, Yang YY, Cheng DC, Liu SY, Ni LM. COCKTAIL: An RF-based Hybrid Approach for Indoor Localization. Proc. of IEEE Int’l Communications Conf. (ICC),2010:1-5.</li>
+                    <li>[7]Zhang D, Ni LM. Dynamic Clustering for Tracking Multiple Transceiver-free Objects. Proc. of the 7th Annual IEEE Int’l Conf. on Pervasive Computing and Communications (PerCom), 2009:1-8.</li>
+                    <li>[8]Zhang D, Ma J, Chen QB, Ni LM. An RF-based System for Tracking Transceiver-free Objects. Proc. of the 5th Annual IEEE Int’l Conf. on Pervasive Computing and communications(PerCom), 2007∶ 135-144.</li>
+                    <li>[9]Guo XN, Zhang D, Ni LM. Localizing Multiple Objects in an RF-based Dynamic Environment. Proc. of the 32nd Int’l Conf. on Distributed Computing Systems, 2012.</li>
+                    <li>[10]Lu KZ, Chen GL, Feng YH, Liu G, MaO R. Approximation Algorithm for Minimizing Relay Node Placement in Wireless sensor Networks. Science China Information Sciences, 2010,53(11)∶ 2332-2342.</li>
+                    <li>[11]Lu KZ, Xiang XH, Zhang D, Mao R, Feng YH. Localization Algorithm Based on Maximum a Posteriori in Wireless Sensor Networks. International Journal of Distributed Sensor Networks,2012.</li>
+                    <li>[12]Lu KZ, Liu G, Mao R, Feng YH. Relay Node Placement Based on Balancing Power Consumption in Wireless Sensor Networks. IET Wireless Sensor Systems, 2011,1(1):1-6.</li>
+                    <li>[13]Mao R, Miranker WL, Miranker DP. Dimension Reduction for Distance-Based Indexing. Proc. of the 3rd Int. Conf. on SImilarity Search and Applications(SISAP),2010:25-32.</li>
+					<li>[14]Mao, Rui ; Ramakrishnan, Smriti, R. ; Nuckolls, Glen ; Miranker, Daniel, P. An inverted index for mass spectra similarity query and comparison with a metric-space method: case study.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
+{% endblock %}
